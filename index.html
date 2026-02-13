@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Languages — Inglês e Espanhol para Negócios | São Paulo</title>
+<meta name="description" content="Escola de inglês e espanhol corporativo em São Paulo. Aulas presenciais, online e in-company para profissionais e empresas. Let's talk business!">
+<meta property="og:title" content="B2B Languages — Let's talk business!">
+<meta property="og:description" content="Inglês e Espanhol corporativo para profissionais e empresas em São Paulo. +15 anos de experiência.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://b2blanguages.com.br">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%23C0392B'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>B2B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#1a1a2e;--navy-light:#2d2d3f;--red:#C0392B;--red-light:#E74C3C;--gold:#F39C12;--teal:#1ABC9C;
+--white:#FAFAFA;--gray:#94a3b8;--gray-dark:#64748b;--bg:#0f0f1a;
+--font-body:'DM Sans',sans-serif;--font-head:'Poppins',sans-serif;
+--max-w:1200px;--transition:0.3s ease;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}.reveal-delay-5{transition-delay:0.5s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,15,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);transition:var(--transition)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--white)}
+.logo span{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:0.9rem;font-weight:500;color:var(--gray);transition:var(--transition);position:relative}
+.nav-links a:hover{color:var(--white)}
+.lang-switch{display:flex;gap:4px}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,0.15);color:var(--gray);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;transition:var(--transition)}
+.lang-btn.active,.lang-btn:hover{border-color:var(--red);color:var(--white);background:rgba(192,57,43,0.15)}
+.nav-cta{background:var(--red);color:#fff;padding:10px 22px;border-radius:8px;font-size:0.85rem;font-weight:600;border:none;cursor:pointer;transition:var(--transition);white-space:nowrap}
+.nav-cta:hover{background:var(--red-light);transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+
+/* MOBILE NAV */
+@media(max-width:900px){
+.nav-links{position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(15,15,26,0.98);flex-direction:column;justify-content:center;gap:28px;transform:translateX(100%);transition:transform 0.3s ease}
+.nav-links.open{transform:translateX(0)}
+.hamburger{display:block}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-30%;width:800px;height:800px;background:radial-gradient(circle,rgba(192,57,43,0.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40%;left:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(26,188,156,0.08) 0%,transparent 70%);pointer-events:none}
+.hero .container{position:relative;z-index:1}
+.hero-content{max-width:700px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.3);padding:8px 18px;border-radius:50px;font-size:0.85rem;color:var(--red-light);margin-bottom:28px}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.5rem,6vw,4rem);font-weight:800;line-height:1.1;margin-bottom:20px}
+.hero h1 .accent{color:var(--red)}
+.hero p{font-size:1.15rem;color:var(--gray);max-width:540px;margin-bottom:36px;line-height:1.7}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--red);color:#fff;padding:16px 32px;border-radius:10px;font-size:1rem;font-weight:600;border:none;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(192,57,43,0.3)}
+.btn-secondary{background:transparent;color:var(--white);padding:16px 32px;border-radius:10px;font-size:1rem;font-weight:600;border:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--white);transform:translateY(-2px)}
+.hero-visual{position:absolute;right:0;top:50%;transform:translateY(-50%);width:400px;height:400px;opacity:0.6}
+@media(max-width:900px){.hero-visual{display:none}}
+.geo-shape{position:absolute;border-radius:20px;opacity:0.15}
+.geo-1{width:200px;height:200px;background:linear-gradient(135deg,var(--red),var(--gold));top:20%;right:10%;transform:rotate(15deg);animation:float 8s ease-in-out infinite}
+.geo-2{width:140px;height:140px;background:linear-gradient(135deg,var(--teal),var(--navy-light));top:50%;right:25%;transform:rotate(-20deg);animation:float 6s ease-in-out infinite 1s}
+.geo-3{width:80px;height:80px;border:3px solid var(--red);top:30%;right:40%;transform:rotate(45deg);animation:float 7s ease-in-out infinite 0.5s;border-radius:12px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(15deg)}50%{transform:translateY(-20px) rotate(20deg)}}
+
+/* SECTIONS */
+section{padding:100px 0}
+.section-label{font-size:0.85rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.section-title{font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);font-weight:700;margin-bottom:20px;line-height:1.2}
+.section-subtitle{color:var(--gray);font-size:1.05rem;max-width:600px;line-height:1.7}
+
+/* SERVICES */
+#solucoes{background:var(--bg)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:50px}
+.service-card{background:rgba(45,45,63,0.4);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:36px;transition:var(--transition);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{transform:translateY(-4px);border-color:rgba(192,57,43,0.2);background:rgba(45,45,63,0.6)}
+.service-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px}
+.service-icon.english{background:rgba(192,57,43,0.15);color:var(--red-light)}
+.service-icon.spanish{background:rgba(243,156,18,0.15);color:var(--gold)}
+.service-icon.company{background:rgba(26,188,156,0.15);color:var(--teal)}
+.service-icon.online{background:rgba(52,152,219,0.15);color:#3498db}
+.service-icon.group{background:rgba(155,89,182,0.15);color:#9b59b6}
+.service-icon.individual{background:rgba(230,126,34,0.15);color:#e67e22}
+.service-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:10px}
+.service-card p{color:var(--gray);font-size:0.95rem;line-height:1.6}
+
+/* METHOD */
+#metodo{background:linear-gradient(180deg,var(--bg) 0%,rgba(26,26,46,0.5) 100%)}
+.method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:50px}
+.method-item{display:flex;gap:18px;align-items:flex-start}
+.method-num{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:rgba(192,57,43,0.12);color:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:700;font-size:1.1rem}
+.method-item h4{font-size:1.05rem;margin-bottom:6px}
+.method-item p{color:var(--gray);font-size:0.9rem;line-height:1.6}
+
+/* STATS */
+.stats{background:linear-gradient(135deg,var(--red) 0%,#8e1c13 100%);padding:60px 0;position:relative;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;z-index:1}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:4px}
+.stat-label{font-size:0.9rem;opacity:0.85}
+@media(max-width:700px){.stats .container{grid-template-columns:repeat(2,1fr);gap:24px}}
+
+/* TESTIMONIALS */
+#depoimentos{background:var(--bg)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:50px}
+.testimonial-card{background:rgba(45,45,63,0.35);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;position:relative}
+.testimonial-card::before{content:'\201C';font-size:4rem;color:var(--red);opacity:0.3;position:absolute;top:12px;left:20px;font-family:serif;line-height:1}
+.testimonial-card p{position:relative;z-index:1;color:var(--gray);font-size:0.95rem;line-height:1.7;font-style:italic;margin-bottom:20px;padding-top:24px}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem}
+.testimonial-author h4{font-size:0.95rem;margin-bottom:2px}
+.testimonial-author span{font-size:0.8rem;color:var(--gray-dark)}
+
+/* FORMS */
+#contato,#trial{background:rgba(26,26,46,0.3)}
+#trial{background:linear-gradient(180deg,rgba(26,26,46,0.3) 0%,var(--bg) 100%)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px;max-width:700px}
+.form-grid.centered{margin-left:auto;margin-right:auto}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:0.85rem;font-weight:500;color:var(--gray)}
+.form-group input,.form-group select,.form-group textarea{background:rgba(45,45,63,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:var(--white);font-family:var(--font-body);font-size:0.95rem;transition:var(--transition);outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,0.15)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select option{background:var(--navy-light);color:var(--white)}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.form-success{display:none;text-align:center;padding:40px;background:rgba(26,188,156,0.1);border:1px solid rgba(26,188,156,0.3);border-radius:16px;margin-top:40px;max-width:700px}
+.form-success.centered{margin-left:auto;margin-right:auto}
+.form-success i{font-size:3rem;color:var(--teal);margin-bottom:16px}
+.form-success h3{font-size:1.3rem;margin-bottom:8px}
+.form-success p{color:var(--gray)}
+.wa-section-btn{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 28px;border-radius:10px;font-weight:600;font-size:1rem;margin-top:24px;transition:var(--transition)}
+.wa-section-btn:hover{background:#1da851;transform:translateY(-2px)}
+
+/* FAQ */
+#faq{background:var(--bg)}
+.faq-list{max-width:750px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.06);padding:20px 0}
+.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:1.05rem;gap:16px;transition:var(--transition)}
+.faq-q:hover{color:var(--red-light)}
+.faq-q i{transition:transform 0.3s ease;color:var(--gray);flex-shrink:0}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;color:var(--gray);font-size:0.95rem;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding-top:14px}
+
+/* FOOTER */
+footer{background:rgba(15,15,26,0.9);border-top:1px solid rgba(255,255,255,0.05);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:700px){.footer-grid{grid-template-columns:1fr}}
+.footer-brand p{color:var(--gray);font-size:0.9rem;margin-top:12px;line-height:1.7}
+.footer-social{display:flex;gap:12px;margin-top:16px}
+.footer-social a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:var(--gray);transition:var(--transition)}
+.footer-social a:hover{background:var(--red);color:#fff}
+.footer-col h4{font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--gray-dark)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--gray);font-size:0.9rem;transition:var(--transition)}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:24px;text-align:center;color:var(--gray-dark);font-size:0.85rem}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.8rem;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:var(--transition);animation:pulse-wa 2s infinite}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.5)}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.6),0 0 0 12px rgba(37,211,102,0.1)}}
+
+/* LANG SYSTEM */
+[data-lang-en],[data-lang-es]{display:none}
+body.lang-en [data-lang-pt]{display:none}
+body.lang-en [data-lang-en]{display:revert}
+body.lang-es [data-lang-pt]{display:none}
+body.lang-es [data-lang-es]{display:revert}
+/* inline elements need inline display */
+span[data-lang-en],span[data-lang-es],span[data-lang-pt],
+a[data-lang-en],a[data-lang-es],a[data-lang-pt],
+button[data-lang-en] span,button[data-lang-es] span{display:none}
+body:not(.lang-en):not(.lang-es) span[data-lang-pt],
+body:not(.lang-en):not(.lang-es) a[data-lang-pt]{display:inline}
+body.lang-en span[data-lang-en],body.lang-en a[data-lang-en]{display:inline}
+body.lang-es span[data-lang-es],body.lang-es a[data-lang-es]{display:inline}
+/* block-level data-lang */
+div[data-lang-en],div[data-lang-es],div[data-lang-pt],
+p[data-lang-en],p[data-lang-es],p[data-lang-pt],
+h1[data-lang-en],h1[data-lang-es],h1[data-lang-pt],
+h2[data-lang-en],h2[data-lang-es],h2[data-lang-pt],
+h3[data-lang-en],h3[data-lang-es],h3[data-lang-pt],
+h4[data-lang-en],h4[data-lang-es],h4[data-lang-pt],
+li[data-lang-en],li[data-lang-es],li[data-lang-pt],
+label[data-lang-en],label[data-lang-es],label[data-lang-pt],
+option[data-lang-en],option[data-lang-es],option[data-lang-pt]{display:none}
+body:not(.lang-en):not(.lang-es) [data-lang-pt]{display:revert}
+body.lang-en [data-lang-en]{display:revert}
+body.lang-es [data-lang-es]{display:revert}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="container">
+<a href="#" class="logo">B2B <span>Languages</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#solucoes" data-lang-pt>Soluções</a><a href="#solucoes" data-lang-en>Solutions</a><a href="#solucoes" data-lang-es>Soluciones</a></li>
+<li><a href="#metodo" data-lang-pt>Método</a><a href="#metodo" data-lang-en>Method</a><a href="#metodo" data-lang-es>Método</a></li>
+<li><a href="#depoimentos" data-lang-pt>Depoimentos</a><a href="#depoimentos" data-lang-en>Testimonials</a><a href="#depoimentos" data-lang-es>Testimonios</a></li>
+<li><a href="#contato" data-lang-pt>Contato</a><a href="#contato" data-lang-en>Contact</a><a href="#contato" data-lang-es>Contacto</a></li>
+<li>
+<div class="lang-switch">
+<button class="lang-btn active" data-setlang="pt">🇧🇷 PT</button>
+<button class="lang-btn" data-setlang="en">🇺🇸 EN</button>
+<button class="lang-btn" data-setlang="es">🇪🇸 ES</button>
+</div>
+</li>
+<li><button class="nav-cta" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})"><span data-lang-pt>Aula Experimental Grátis</span><span data-lang-en>Free Trial Class</span><span data-lang-es>Clase de Prueba Gratis</span></button></li>
+</ul>
+<button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content reveal">
+<div class="hero-badge"><i class="fas fa-globe-americas"></i> <span data-lang-pt>Let's talk business!</span><span data-lang-en>Let's talk business!</span><span data-lang-es>Let's talk business!</span></div>
+<h1 data-lang-pt><span class="accent">Inglês e Espanhol</span> para quem faz negócios</h1>
+<h1 data-lang-en><span class="accent">English & Spanish</span> for Business Professionals</h1>
+<h1 data-lang-es><span class="accent">Inglés y Español</span> para profesionales de negocios</h1>
+<p data-lang-pt>Treinamento linguístico focado em resultados para profissionais e empresas. Desenvolva fluência real para reuniões, negociações e apresentações internacionais.</p>
+<p data-lang-en>Results-driven language training for professionals and companies. Develop real fluency for meetings, negotiations, and international presentations.</p>
+<p data-lang-es>Formación lingüística enfocada en resultados para profesionales y empresas. Desarrolle fluidez real para reuniones, negociaciones y presentaciones internacionales.</p>
+<div class="hero-btns">
+<button class="btn-primary" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})"><i class="fas fa-rocket"></i> <span data-lang-pt>Aula Experimental Grátis</span><span data-lang-en>Free Trial Class</span><span data-lang-es>Clase de Prueba Gratis</span></button>
+<button class="btn-secondary" onclick="document.getElementById('solucoes').scrollIntoView({behavior:'smooth'})"><span data-lang-pt>Conheça nossos planos</span><span data-lang-en>See our plans</span><span data-lang-es>Conoce nuestros planes</span> <i class="fas fa-arrow-down"></i></button>
+</div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="geo-shape geo-1"></div>
+<div class="geo-shape geo-2"></div>
+<div class="geo-shape geo-3"></div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="solucoes">
+<div class="container">
+<div class="reveal">
+<p class="section-label" data-lang-pt>Soluções</p>
+<p class="section-label" data-lang-en>Solutions</p>
+<p class="section-label" data-lang-es>Soluciones</p>
+<h2 class="section-title" data-lang-pt>Tudo o que sua empresa precisa para se comunicar globalmente</h2>
+<h2 class="section-title" data-lang-en>Everything your company needs to communicate globally</h2>
+<h2 class="section-title" data-lang-es>Todo lo que su empresa necesita para comunicarse globalmente</h2>
+</div>
+<div class="services-grid">
+<!-- Business English -->
+<div class="service-card reveal reveal-delay-1">
+<div class="service-icon english"><i class="fas fa-comments"></i></div>
+<h3 data-lang-pt>Business English</h3><h3 data-lang-en>Business English</h3><h3 data-lang-es>Business English</h3>
+<p data-lang-pt>Inglês corporativo focado em reuniões, apresentações, negociações e comunicação internacional.</p>
+<p data-lang-en>Corporate English focused on meetings, presentations, negotiations, and international communication.</p>
+<p data-lang-es>Inglés corporativo enfocado en reuniones, presentaciones, negociaciones y comunicación internacional.</p>
+</div>
+<!-- Business Spanish -->
+<div class="service-card reveal reveal-delay-2">
+<div class="service-icon spanish"><i class="fas fa-handshake"></i></div>
+<h3 data-lang-pt>Business Spanish</h3><h3 data-lang-en>Business Spanish</h3><h3 data-lang-es>Español de Negocios</h3>
+<p data-lang-pt>Espanhol para negócios, ideal para expandir no mercado latino-americano com confiança.</p>
+<p data-lang-en>Business Spanish, ideal for expanding in the Latin American market with confidence.</p>
+<p data-lang-es>Español para negocios, ideal para expandirse en el mercado latinoamericano con confianza.</p>
+</div>
+<!-- In-Company -->
+<div class="service-card reveal reveal-delay-3">
+<div class="service-icon company"><i class="fas fa-building"></i></div>
+<h3 data-lang-pt>In-Company</h3><h3 data-lang-en>In-Company</h3><h3 data-lang-es>In-Company</h3>
+<p data-lang-pt>Aulas presenciais na sua empresa, com horários flexíveis e conteúdo personalizado para sua equipe.</p>
+<p data-lang-en>On-site classes at your company, with flexible schedules and customized content for your team.</p>
+<p data-lang-es>Clases presenciales en su empresa, con horarios flexibles y contenido personalizado para su equipo.</p>
+</div>
+<!-- Online -->
+<div class="service-card reveal reveal-delay-4">
+<div class="service-icon online"><i class="fas fa-laptop"></i></div>
+<h3 data-lang-pt>Aulas Online</h3><h3 data-lang-en>Online Classes</h3><h3 data-lang-es>Clases Online</h3>
+<p data-lang-pt>Aulas ao vivo por videoconferência com flexibilidade total. Estude de qualquer lugar.</p>
+<p data-lang-en>Live classes via video conference with total flexibility. Study from anywhere.</p>
+<p data-lang-es>Clases en vivo por videoconferencia con total flexibilidad. Estudie desde cualquier lugar.</p>
+</div>
+<!-- Groups -->
+<div class="service-card reveal reveal-delay-5">
+<div class="service-icon group"><i class="fas fa-users"></i></div>
+<h3 data-lang-pt>Turmas em Grupo</h3><h3 data-lang-en>Group Classes</h3><h3 data-lang-es>Clases Grupales</h3>
+<p data-lang-pt>Turmas pequenas de até 6 alunos para máxima interação e prática conversacional.</p>
+<p data-lang-en>Small groups of up to 6 students for maximum interaction and conversational practice.</p>
+<p data-lang-es>Grupos pequeños de hasta 6 alumnos para máxima interacción y práctica conversacional.</p>
+</div>
+<!-- Individual -->
+<div class="service-card reveal reveal-delay-5">
+<div class="service-icon individual"><i class="fas fa-user-tie"></i></div>
+<h3 data-lang-pt>Aulas Individuais</h3><h3 data-lang-en>Private Classes</h3><h3 data-lang-es>Clases Individuales</h3>
+<p data-lang-pt>Aulas particulares 100% personalizadas para seus objetivos profissionais específicos.</p>
+<p data-lang-en>100% personalized private classes tailored to your specific professional goals.</p>
+<p data-lang-es>Clases particulares 100% personalizadas para sus objetivos profesionales específicos.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD -->
+<section id="metodo">
+<div class="container">
+<div class="reveal">
+<p class="section-label" data-lang-pt>Nosso Método</p>
+<p class="section-label" data-lang-en>Our Method</p>
+<p class="section-label" data-lang-es>Nuestro Método</p>
+<h2 class="section-title" data-lang-pt>O que nos torna diferentes</h2>
+<h2 class="section-title" data-lang-en>What makes us different</h2>
+<h2 class="section-title" data-lang-es>Lo que nos hace diferentes</h2>
+<p class="section-subtitle" data-lang-pt>Nosso método é baseado em comunicação real aplicada ao universo corporativo desde o primeiro dia.</p>
+<p class="section-subtitle" data-lang-en>Our method is based on real communication applied to the corporate world from day one.</p>
+<p class="section-subtitle" data-lang-es>Nuestro método se basa en comunicación real aplicada al universo corporativo desde el primer día.</p>
+</div>
+<div class="method-grid">
+<div class="method-item reveal reveal-delay-1">
+<div class="method-num">01</div>
+<div>
+<h4 data-lang-pt>Comunicação real desde a 1ª aula</h4><h4 data-lang-en>Real communication from class one</h4><h4 data-lang-es>Comunicación real desde la 1ª clase</h4>
+<p data-lang-pt>Nada de gramática descontextualizada. Você pratica situações reais do seu dia a dia corporativo.</p>
+<p data-lang-en>No decontextualized grammar. You practice real situations from your daily corporate life.</p>
+<p data-lang-es>Nada de gramática descontextualizada. Practicas situaciones reales de tu día a día corporativo.</p>
+</div>
+</div>
+<div class="method-item reveal reveal-delay-2">
+<div class="method-num">02</div>
+<div>
+<h4 data-lang-pt>Professores com experiência corporativa</h4><h4 data-lang-en>Teachers with corporate experience</h4><h4 data-lang-es>Profesores con experiencia corporativa</h4>
+<p data-lang-pt>Professores nativos e bilíngues que conhecem a realidade do mundo dos negócios.</p>
+<p data-lang-en>Native and bilingual teachers who understand the business world.</p>
+<p data-lang-es>Profesores nativos y bilingües que conocen la realidad del mundo de los negocios.</p>
+</div>
+</div>
+<div class="method-item reveal reveal-delay-3">
+<div class="method-num">03</div>
+<div>
+<h4 data-lang-pt>Material personalizado por setor</h4><h4 data-lang-en>Industry-specific material</h4><h4 data-lang-es>Material personalizado por sector</h4>
+<p data-lang-pt>Conteúdo adaptado para tech, finanças, jurídico, saúde e muito mais.</p>
+<p data-lang-en>Content adapted for tech, finance, legal, healthcare, and more.</p>
+<p data-lang-es>Contenido adaptado para tech, finanzas, legal, salud y mucho más.</p>
+</div>
+</div>
+<div class="method-item reveal reveal-delay-4">
+<div class="method-num">04</div>
+<div>
+<h4 data-lang-pt>Acompanhamento mensal de evolução</h4><h4 data-lang-en>Monthly progress tracking</h4><h4 data-lang-es>Seguimiento mensual de evolución</h4>
+<p data-lang-pt>Relatórios periódicos para você e sua empresa acompanharem o progresso real.</p>
+<p data-lang-en>Periodic reports so you and your company can track real progress.</p>
+<p data-lang-es>Informes periódicos para que usted y su empresa sigan el progreso real.</p>
+</div>
+</div>
+<div class="method-item reveal reveal-delay-5">
+<div class="method-num">05</div>
+<div>
+<h4 data-lang-pt>Certificado ao final de cada módulo</h4><h4 data-lang-en>Certificate at the end of each module</h4><h4 data-lang-es>Certificado al final de cada módulo</h4>
+<p data-lang-pt>Reconhecimento oficial para valorizar o investimento em capacitação da equipe.</p>
+<p data-lang-en>Official recognition to enhance the value of your team's training investment.</p>
+<p data-lang-es>Reconocimiento oficial para valorizar la inversión en capacitación del equipo.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+<div class="stat-item reveal">
+<div class="stat-num">+500</div>
+<div class="stat-label" data-lang-pt>Alunos formados</div>
+<div class="stat-label" data-lang-en>Students trained</div>
+<div class="stat-label" data-lang-es>Alumnos formados</div>
+</div>
+<div class="stat-item reveal reveal-delay-1">
+<div class="stat-num">+50</div>
+<div class="stat-label" data-lang-pt>Empresas atendidas</div>
+<div class="stat-label" data-lang-en>Companies served</div>
+<div class="stat-label" data-lang-es>Empresas atendidas</div>
+</div>
+<div class="stat-item reveal reveal-delay-2">
+<div class="stat-num">+15</div>
+<div class="stat-label" data-lang-pt>Anos de experiência</div>
+<div class="stat-label" data-lang-en>Years of experience</div>
+<div class="stat-label" data-lang-es>Años de experiencia</div>
+</div>
+<div class="stat-item reveal reveal-delay-3">
+<div class="stat-num">98%</div>
+<div class="stat-label" data-lang-pt>De satisfação</div>
+<div class="stat-label" data-lang-en>Satisfaction rate</div>
+<div class="stat-label" data-lang-es>De satisfacción</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="depoimentos">
+<div class="container">
+<div class="reveal">
+<p class="section-label" data-lang-pt>Depoimentos</p>
+<p class="section-label" data-lang-en>Testimonials</p>
+<p class="section-label" data-lang-es>Testimonios</p>
+<h2 class="section-title" data-lang-pt>O que nossos alunos dizem</h2>
+<h2 class="section-title" data-lang-en>What our students say</h2>
+<h2 class="section-title" data-lang-es>Lo que dicen nuestros alumnos</h2>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal reveal-delay-1">
+<p data-lang-pt>"O curso mudou completamente minha confiança em reuniões internacionais. Hoje consigo liderar apresentações em inglês sem nenhum problema."</p>
+<p data-lang-en>"The course completely changed my confidence in international meetings. Today I can lead presentations in English without any issues."</p>
+<p data-lang-es>"El curso cambió completamente mi confianza en reuniones internacionales. Hoy puedo liderar presentaciones en inglés sin ningún problema."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:rgba(192,57,43,0.2);color:var(--red-light)">RM</div>
+<div>
+<h4>Renata Machado</h4>
+<span data-lang-pt>Diretora de Operações — Nexus Tecnologia</span>
+<span data-lang-en>Operations Director — Nexus Tecnologia</span>
+<span data-lang-es>Directora de Operaciones — Nexus Tecnologia</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-2">
+<p data-lang-pt>"Precisávamos de espanhol para expandir no mercado argentino e chileno. A B2B entendeu perfeitamente nosso contexto de negócio e entregou resultados rápidos."</p>
+<p data-lang-en>"We needed Spanish to expand into the Argentine and Chilean markets. B2B perfectly understood our business context and delivered quick results."</p>
+<p data-lang-es>"Necesitábamos español para expandirnos en el mercado argentino y chileno. B2B entendió perfectamente nuestro contexto de negocio y entregó resultados rápidos."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:rgba(243,156,18,0.2);color:var(--gold)">CA</div>
+<div>
+<h4>Carlos Andrade</h4>
+<span data-lang-pt>CEO — Vertis Consultoria</span>
+<span data-lang-en>CEO — Vertis Consultoria</span>
+<span data-lang-es>CEO — Vertis Consultoria</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal reveal-delay-3">
+<p data-lang-pt>"A flexibilidade das aulas online e a qualidade dos professores são excepcionais. Consigo manter meu treinamento mesmo com uma agenda corrida."</p>
+<p data-lang-en>"The flexibility of online classes and the quality of the teachers are exceptional. I can maintain my training even with a busy schedule."</p>
+<p data-lang-es>"La flexibilidad de las clases online y la calidad de los profesores son excepcionales. Puedo mantener mi formación incluso con una agenda apretada."</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:rgba(26,188,156,0.2);color:var(--teal)">FL</div>
+<div>
+<h4>Fernanda Lima</h4>
+<span data-lang-pt>Gerente Financeira — Grupo Solaris</span>
+<span data-lang-en>Finance Manager — Grupo Solaris</span>
+<span data-lang-es>Gerente Financiera — Grupo Solaris</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contato">
+<div class="container">
+<div class="reveal">
+<p class="section-label" data-lang-pt>Contato</p>
+<p class="section-label" data-lang-en>Contact</p>
+<p class="section-label" data-lang-es>Contacto</p>
+<h2 class="section-title" data-lang-pt>Fale com a gente</h2>
+<h2 class="section-title" data-lang-en>Get in touch</h2>
+<h2 class="section-title" data-lang-es>Contáctenos</h2>
+<p class="section-subtitle" data-lang-pt>Preencha o formulário ou fale diretamente pelo WhatsApp. Respondemos em até 2 horas.</p>
+<p class="section-subtitle" data-lang-en>Fill out the form or reach us directly via WhatsApp. We respond within 2 hours.</p>
+<p class="section-subtitle" data-lang-es>Complete el formulario o contáctenos directamente por WhatsApp. Respondemos en hasta 2 horas.</p>
+</div>
+<form class="form-grid reveal" id="contactForm">
+<div class="form-group">
+<label data-lang-pt>Nome</label><label data-lang-en>Name</label><label data-lang-es>Nombre</label>
+<input type="text" name="name" required>
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+<div class="form-group">
+<label data-lang-pt>Telefone</label><label data-lang-en>Phone</label><label data-lang-es>Teléfono</label>
+<input type="tel" name="phone">
+</div>
+<div class="form-group">
+<label data-lang-pt>Empresa</label><label data-lang-en>Company</label><label data-lang-es>Empresa</label>
+<input type="text" name="company">
+</div>
+<div class="form-group full">
+<label data-lang-pt>Idioma de interesse</label><label data-lang-en>Language of interest</label><label data-lang-es>Idioma de interés</label>
+<select name="language" required>
+<option value="" data-lang-pt>Selecione...</option><option value="" data-lang-en>Select...</option><option value="" data-lang-es>Seleccione...</option>
+<option value="english" data-lang-pt>Inglês</option><option value="english" data-lang-en>English</option><option value="english" data-lang-es>Inglés</option>
+<option value="spanish" data-lang-pt>Espanhol</option><option value="spanish" data-lang-en>Spanish</option><option value="spanish" data-lang-es>Español</option>
+<option value="both" data-lang-pt>Ambos</option><option value="both" data-lang-en>Both</option><option value="both" data-lang-es>Ambos</option>
+</select>
+</div>
+<div class="form-group full">
+<label data-lang-pt>Mensagem</label><label data-lang-en>Message</label><label data-lang-es>Mensaje</label>
+<textarea name="message" rows="4"></textarea>
+</div>
+<div class="form-group full">
+<button type="submit" class="btn-primary" style="width:100%;justify-content:center"><i class="fas fa-paper-plane"></i> <span data-lang-pt>Enviar Mensagem</span><span data-lang-en>Send Message</span><span data-lang-es>Enviar Mensaje</span></button>
+</div>
+</form>
+<div class="form-success" id="contactSuccess">
+<i class="fas fa-check-circle"></i>
+<h3 data-lang-pt>Mensagem enviada!</h3><h3 data-lang-en>Message sent!</h3><h3 data-lang-es>¡Mensaje enviado!</h3>
+<p data-lang-pt>Entraremos em contato em breve. Obrigado!</p><p data-lang-en>We'll get back to you soon. Thank you!</p><p data-lang-es>Nos pondremos en contacto pronto. ¡Gracias!</p>
+</div>
+<div class="reveal" style="text-align:center;margin-top:32px">
+<a href="https://wa.me/5511981088908" target="_blank" class="wa-section-btn"><i class="fab fa-whatsapp"></i> <span data-lang-pt>Falar pelo WhatsApp</span><span data-lang-en>Chat on WhatsApp</span><span data-lang-es>Hablar por WhatsApp</span></a>
+</div>
+</div>
+</section>
+
+<!-- TRIAL CLASS -->
+<section id="trial">
+<div class="container">
+<div class="reveal" style="text-align:center">
+<p class="section-label" data-lang-pt>Aula Experimental</p>
+<p class="section-label" data-lang-en>Trial Class</p>
+<p class="section-label" data-lang-es>Clase de Prueba</p>
+<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-pt>Experimente uma aula grátis e sem compromisso</h2>
+<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-en>Try a free class with no obligation</h2>
+<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-es>Pruebe una clase gratis y sin compromiso</h2>
+<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-pt>Faça uma avaliação gratuita do seu nível e conheça nossa metodologia na prática.</p>
+<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-en>Get a free level assessment and experience our methodology in practice.</p>
+<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-es>Realice una evaluación gratuita de su nivel y conozca nuestra metodología en la práctica.</p>
+</div>
+<form class="form-grid centered reveal" id="trialForm">
+<div class="form-group">
+<label data-lang-pt>Nome</label><label data-lang-en>Name</label><label data-lang-es>Nombre</label>
+<input type="text" name="name" required>
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+<div class="form-group">
+<label data-lang-pt>Telefone</label><label data-lang-en>Phone</label><label data-lang-es>Teléfono</label>
+<input type="tel" name="phone" required>
+</div>
+<div class="form-group">
+<label data-lang-pt>Empresa</label><label data-lang-en>Company</label><label data-lang-es>Empresa</label>
+<input type="text" name="company">
+</div>
+<div class="form-group">
+<label data-lang-pt>Nível</label><label data-lang-en>Level</label><label data-lang-es>Nivel</label>
+<select name="level" required>
+<option value="" data-lang-pt>Selecione...</option><option value="" data-lang-en>Select...</option><option value="" data-lang-es>Seleccione...</option>
+<option value="beginner" data-lang-pt>Iniciante</option><option value="beginner" data-lang-en>Beginner</option><option value="beginner" data-lang-es>Principiante</option>
+<option value="intermediate" data-lang-pt>Intermediário</option><option value="intermediate" data-lang-en>Intermediate</option><option value="intermediate" data-lang-es>Intermedio</option>
+<option value="advanced" data-lang-pt>Avançado</option><option value="advanced" data-lang-en>Advanced</option><option value="advanced" data-lang-es>Avanzado</option>
+</select>
+</div>
+<div class="form-group">
+<label data-lang-pt>Idioma</label><label data-lang-en>Language</label><label data-lang-es>Idioma</label>
+<select name="language" required>
+<option value="" data-lang-pt>Selecione...</option><option value="" data-lang-en>Select...</option><option value="" data-lang-es>Seleccione...</option>
+<option value="english" data-lang-pt>Inglês</option><option value="english" data-lang-en>English</option><option value="english" data-lang-es>Inglés</option>
+<option value="spanish" data-lang-pt>Espanhol</option><option value="spanish" data-lang-en>Spanish</option><option value="spanish" data-lang-es>Español</option>
+</select>
+</div>
+<div class="form-group full">
+<button type="submit" class="btn-primary" style="width:100%;justify-content:center"><i class="fas fa-graduation-cap"></i> <span data-lang-pt>Quero minha aula grátis!</span><span data-lang-en>I want my free class!</span><span data-lang-es>¡Quiero mi clase gratis!</span></button>
+</div>
+</form>
+<div class="form-success centered" id="trialSuccess">
+<i class="fas fa-check-circle"></i>
+<h3 data-lang-pt>Inscrição recebida!</h3><h3 data-lang-en>Registration received!</h3><h3 data-lang-es>¡Inscripción recibida!</h3>
+<p data-lang-pt>Entraremos em contato para agendar sua aula experimental. Obrigado!</p><p data-lang-en>We'll contact you to schedule your trial class. Thank you!</p><p data-lang-es>Nos pondremos en contacto para programar su clase de prueba. ¡Gracias!</p>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<div class="reveal" style="text-align:center">
+<p class="section-label">FAQ</p>
+<h2 class="section-title" style="margin:0 auto" data-lang-pt>Perguntas Frequentes</h2>
+<h2 class="section-title" style="margin:0 auto" data-lang-en>Frequently Asked Questions</h2>
+<h2 class="section-title" style="margin:0 auto" data-lang-es>Preguntas Frecuentes</h2>
+</div>
+<div class="faq-list reveal">
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span data-lang-pt>Qual a duração de cada módulo?</span><span data-lang-en>How long is each module?</span><span data-lang-es>¿Cuánto dura cada módulo?</span>
+<i class="fas fa-chevron-down"></i>
+</div>
+<div class="faq-a">
+<span data-lang-pt>Cada módulo tem duração de aproximadamente 3 meses, com aulas 2x por semana. O ritmo pode ser ajustado conforme a necessidade da empresa.</span>
+<span data-lang-en>Each module lasts approximately 3 months, with classes twice a week. The pace can be adjusted according to company needs.</span>
+<span data-lang-es>Cada módulo dura aproximadamente 3 meses, con clases 2 veces por semana. El ritmo puede ajustarse según las necesidades de la empresa.</span>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span data-lang-pt>Vocês oferecem aulas fora do horário comercial?</span><span data-lang-en>Do you offer classes outside business hours?</span><span data-lang-es>¿Ofrecen clases fuera del horario comercial?</span>
+<i class="fas fa-chevron-down"></i>
+</div>
+<div class="faq-a">
+<span data-lang-pt>Sim! Temos horários flexíveis, incluindo aulas no início da manhã (7h) e à noite (até 21h), além de opções aos sábados.</span>
+<span data-lang-en>Yes! We have flexible schedules, including early morning (7 AM) and evening classes (until 9 PM), plus Saturday options.</span>
+<span data-lang-es>¡Sí! Tenemos horarios flexibles, incluyendo clases temprano por la mañana (7h) y por la noche (hasta 21h), además de opciones los sábados.</span>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span data-lang-pt>Como funciona a aula experimental?</span><span data-lang-en>How does the trial class work?</span><span data-lang-es>¿Cómo funciona la clase de prueba?</span>
+<i class="fas fa-chevron-down"></i>
+</div>
+<div class="faq-a">
+<span data-lang-pt>É uma sessão gratuita de 30 minutos onde avaliamos seu nível atual, entendemos seus objetivos e apresentamos nossa metodologia. Sem compromisso!</span>
+<span data-lang-en>It's a free 30-minute session where we assess your current level, understand your goals, and present our methodology. No obligation!</span>
+<span data-lang-es>Es una sesión gratuita de 30 minutos donde evaluamos su nivel actual, entendemos sus objetivos y presentamos nuestra metodología. ¡Sin compromiso!</span>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+<span data-lang-pt>Posso trocar entre aula presencial e online?</span><span data-lang-en>Can I switch between in-person and online classes?</span><span data-lang-es>¿Puedo alternar entre clases presenciales y online?</span>
+<i class="fas fa-chevron-down"></i>
+</div>
+<div class="faq-a">
+<span data-lang-pt>Sim, nosso modelo híbrido permite que você alterne entre presencial e online conforme sua agenda, sem custo adicional.</span>
+<span data-lang-en>Yes, our hybrid model allows you to switch between in-person and online as your schedule requires, at no extra cost.</span>
+<span data-lang-es>Sí, nuestro modelo híbrido le permite alternar entre presencial y online según su agenda, sin costo adicional.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo">B2B <span>Languages</span></div>
+<p data-lang-pt>Escola de inglês e espanhol corporativo em São Paulo. Transformando a comunicação de profissionais e empresas há mais de 15 anos.</p>
+<p data-lang-en>Corporate English and Spanish school in São Paulo. Transforming communication for professionals and companies for over 15 years.</p>
+<p data-lang-es>Escuela de inglés y español corporativo en São Paulo. Transformando la comunicación de profesionales y empresas hace más de 15 años.</p>
+<div class="footer-social">
+<a href="https://facebook.com/b2blanguages" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://twitter.com/b2blanguages" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://linkedin.com/company/3276368" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://wa.me/5511981088908" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-lang-pt>Links Rápidos</h4><h4 data-lang-en>Quick Links</h4><h4 data-lang-es>Enlaces Rápidos</h4>
+<ul>
+<li><a href="#solucoes" data-lang-pt>Soluções</a><a href="#solucoes" data-lang-en>Solutions</a><a href="#solucoes" data-lang-es>Soluciones</a></li>
+<li><a href="#metodo" data-lang-pt>Método</a><a href="#metodo" data-lang-en>Method</a><a href="#metodo" data-lang-es>Método</a></li>
+<li><a href="#depoimentos" data-lang-pt>Depoimentos</a><a href="#depoimentos" data-lang-en>Testimonials</a><a href="#depoimentos" data-lang-es>Testimonios</a></li>
+<li><a href="#contato" data-lang-pt>Contato</a><a href="#contato" data-lang-en>Contact</a><a href="#contato" data-lang-es>Contacto</a></li>
+<li><a href="#trial" data-lang-pt>Aula Experimental</a><a href="#trial" data-lang-en>Trial Class</a><a href="#trial" data-lang-es>Clase de Prueba</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-lang-pt>Contato</h4><h4 data-lang-en>Contact</h4><h4 data-lang-es>Contacto</h4>
+<ul>
+<li><i class="fas fa-map-marker-alt" style="color:var(--red);margin-right:8px"></i> Rua Caramuru, 1438 112B<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saúde, São Paulo, SP<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CEP 04138-002</li>
+<li style="margin-top:12px"><i class="fas fa-phone" style="color:var(--red);margin-right:8px"></i> (11) 3280-0014</li>
+<li><i class="fab fa-whatsapp" style="color:#25D366;margin-right:8px"></i> (11) 98108-8908</li>
+<li style="margin-top:8px"><i class="fas fa-envelope" style="color:var(--red);margin-right:8px"></i> contato@b2blanguages.com.br</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 B2B Languages. <span data-lang-pt>Todos os direitos reservados.</span><span data-lang-en>All rights reserved.</span><span data-lang-es>Todos los derechos reservados.</span></p>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511981088908" target="_blank" class="wa-float" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Language Switcher
+function setLang(lang) {
+  document.body.className = lang === 'pt' ? '' : 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.setlang === lang));
+  localStorage.setItem('b2b-lang', lang);
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.setlang)));
+const saved = localStorage.getItem('b2b-lang');
+if (saved && saved !== 'pt') setLang(saved);
+
+// Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.remove('open');
+}));
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Contact Form
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const fd = new FormData(this);
+  const data = { name: fd.get('name'), email: fd.get('email'), phone: fd.get('phone'), company: fd.get('company'), language: fd.get('language'), message: fd.get('message'), source: 'b2blanguages.com.br', timestamp: new Date().toISOString() };
+  try {
+    await fetch('https://n8n.lfsadigital.com/webhook/b2b-contact-form', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+  } catch(e) {}
+  this.style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+});
+
+// Trial Form
+document.getElementById('trialForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const fd = new FormData(this);
+  const data = { name: fd.get('name'), email: fd.get('email'), phone: fd.get('phone'), company: fd.get('company'), level: fd.get('level'), language: fd.get('language'), source: 'b2blanguages.com.br', type: 'trial_class', timestamp: new Date().toISOString() };
+  try {
+    await fetch('https://n8n.lfsadigital.com/webhook/b2b-trial-class', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+  } catch(e) {}
+  this.style.display = 'none';
+  document.getElementById('trialSuccess').style.display = 'block';
+});
+</script>
+</body>
+</html>
