@@ -246,7 +246,7 @@ body.lang-es [data-lang-es]{display:revert}
 <button class="lang-btn" data-setlang="es">🇪🇸 ES</button>
 </div>
 </li>
-<li><button class="nav-cta" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})"><span data-lang-pt>Aula Experimental Grátis</span><span data-lang-en>Free Trial Class</span><span data-lang-es>Clase de Prueba Gratis</span></button></li>
+<li><button class="nav-cta" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"><span data-lang-pt>Fale Conosco</span><span data-lang-en>Contact Us</span><span data-lang-es>Contáctenos</span></button></li>
 </ul>
 <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
 </div>
@@ -264,7 +264,7 @@ body.lang-es [data-lang-es]{display:revert}
 <p data-lang-en>[Main company description here]</p>
 <p data-lang-es>[Descripción principal de la empresa aquí]</p>
 <div class="hero-btns">
-<button class="btn-primary" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})"><i class="fas fa-rocket"></i> <span data-lang-pt>Aula Experimental Grátis</span><span data-lang-en>Free Trial Class</span><span data-lang-es>Clase de Prueba Gratis</span></button>
+<button class="btn-primary" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})"><i class="fas fa-rocket"></i> <span data-lang-pt>Fale Conosco</span><span data-lang-en>Contact Us</span><span data-lang-es>Contáctenos</span></button>
 <button class="btn-secondary" onclick="document.getElementById('solucoes').scrollIntoView({behavior:'smooth'})"><span data-lang-pt>Conheça nossos planos</span><span data-lang-en>See our plans</span><span data-lang-es>Conoce nuestros planes</span> <i class="fas fa-arrow-down"></i></button>
 </div>
 </div>
@@ -599,64 +599,7 @@ body.lang-es [data-lang-es]{display:revert}
 </section>
 
 <!-- TRIAL CLASS -->
-<section id="trial">
-<div class="container">
-<div class="reveal" style="text-align:center">
-<p class="section-label" data-lang-pt>Aula Experimental</p>
-<p class="section-label" data-lang-en>Trial Class</p>
-<p class="section-label" data-lang-es>Clase de Prueba</p>
-<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-pt>Experimente uma aula grátis e sem compromisso</h2>
-<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-en>Try a free class with no obligation</h2>
-<h2 class="section-title" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-es>Pruebe una clase gratis y sin compromiso</h2>
-<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-pt>Faça uma avaliação gratuita do seu nível e conheça nossa metodologia na prática.</p>
-<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-en>Get a free level assessment and experience our methodology in practice.</p>
-<p class="section-subtitle" style="margin-left:auto;margin-right:auto;text-align:center" data-lang-es>Realice una evaluación gratuita de su nivel y conozca nuestra metodología en la práctica.</p>
-</div>
-<form class="form-grid centered reveal" id="trialForm">
-<div class="form-group">
-<label data-lang-pt>Nome</label><label data-lang-en>Name</label><label data-lang-es>Nombre</label>
-<input type="text" name="name" required>
-</div>
-<div class="form-group">
-<label>Email</label>
-<input type="email" name="email" required>
-</div>
-<div class="form-group">
-<label data-lang-pt>Telefone</label><label data-lang-en>Phone</label><label data-lang-es>Teléfono</label>
-<input type="tel" name="phone" required>
-</div>
-<div class="form-group">
-<label data-lang-pt>Empresa</label><label data-lang-en>Company</label><label data-lang-es>Empresa</label>
-<input type="text" name="company">
-</div>
-<div class="form-group">
-<label data-lang-pt>Nível</label><label data-lang-en>Level</label><label data-lang-es>Nivel</label>
-<select name="level" required>
-<option value="" data-lang-pt>Selecione...</option><option value="" data-lang-en>Select...</option><option value="" data-lang-es>Seleccione...</option>
-<option value="beginner" data-lang-pt>Iniciante</option><option value="beginner" data-lang-en>Beginner</option><option value="beginner" data-lang-es>Principiante</option>
-<option value="intermediate" data-lang-pt>Intermediário</option><option value="intermediate" data-lang-en>Intermediate</option><option value="intermediate" data-lang-es>Intermedio</option>
-<option value="advanced" data-lang-pt>Avançado</option><option value="advanced" data-lang-en>Advanced</option><option value="advanced" data-lang-es>Avanzado</option>
-</select>
-</div>
-<div class="form-group">
-<label data-lang-pt>Idioma</label><label data-lang-en>Language</label><label data-lang-es>Idioma</label>
-<select name="language" required>
-<option value="" data-lang-pt>Selecione...</option><option value="" data-lang-en>Select...</option><option value="" data-lang-es>Seleccione...</option>
-<option value="english" data-lang-pt>Inglês</option><option value="english" data-lang-en>English</option><option value="english" data-lang-es>Inglés</option>
-<option value="spanish" data-lang-pt>Espanhol</option><option value="spanish" data-lang-en>Spanish</option><option value="spanish" data-lang-es>Español</option>
-</select>
-</div>
-<div class="form-group full">
-<button type="submit" class="btn-primary" style="width:100%;justify-content:center"><i class="fas fa-graduation-cap"></i> <span data-lang-pt>Quero minha aula grátis!</span><span data-lang-en>I want my free class!</span><span data-lang-es">¡Quiero mi clase gratis!</span></button>
-</div>
-</form>
-<div class="form-success centered" id="trialSuccess">
-<i class="fas fa-check-circle"></i>
-<h3 data-lang-pt>Inscrição recebida!</h3><h3 data-lang-en>Registration received!</h3><h3 data-lang-es>¡Inscripción recibida!</h3>
-<p data-lang-pt>Entraremos em contato para agendar sua aula experimental. Obrigado!</p><p data-lang-en>We'll contact you to schedule your trial class. Thank you!</p><p data-lang-es>Nos pondremos en contacto para programar su clase de prueba. ¡Gracias!</p>
-</div>
-</div>
-</section>
+<!-- Trial section removed -->
 
 <!-- FAQ -->
 <section id="faq">
@@ -797,17 +740,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   document.getElementById('contactSuccess').style.display = 'block';
 });
 
-// Trial Form
-document.getElementById('trialForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const fd = new FormData(this);
-  const data = { name: fd.get('name'), email: fd.get('email'), phone: fd.get('phone'), company: fd.get('company'), level: fd.get('level'), language: fd.get('language'), source: 'b2blanguages.com.br', type: 'trial_class', timestamp: new Date().toISOString() };
-  try {
-    await fetch('https://n8n.lfsadigital.com/webhook/b2b-trial-class', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-  } catch(e) {}
-  this.style.display = 'none';
-  document.getElementById('trialSuccess').style.display = 'block';
-});
+// Trial form removed
 </script>
 </body>
 </html>
