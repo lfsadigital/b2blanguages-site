@@ -3,35 +3,913 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teste de Nível — B2B Languages</title>
+<title>Teste de Nível de Inglês — B2B Languages</title>
+<meta name="description" content="Descubra seu nível de inglês com nosso teste interativo. Avaliação gratuita com resultados imediatos.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%238c3124'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>B2B</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&family=Titillium+Web:wght@200;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#8c3124;--red-light:#a63b2d;--gray:#666;--gray-dark:#363636;--font-body:'Titillium Web',sans-serif;--font-head:'Dosis',sans-serif}
-body{font-family:var(--font-body);background:#f9f9f9;color:var(--gray-dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
-.test-container{background:#fff;border-radius:16px;padding:48px 40px;max-width:600px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,0.08);text-align:center}
-.test-container img{height:60px;border-radius:10px;margin-bottom:24px}
-.test-container h1{font-family:var(--font-head);font-size:2rem;margin-bottom:8px;color:var(--gray-dark)}
-.test-container p{color:var(--gray);margin-bottom:32px;font-size:1rem;line-height:1.6}
-.placeholder-box{background:#f0f0f0;border:2px dashed #ccc;border-radius:12px;padding:60px 24px;color:var(--gray);font-size:1rem}
-.back-link{margin-top:24px;display:inline-block;color:var(--red);font-weight:600;text-decoration:none;transition:0.3s}
-.back-link:hover{color:var(--red-light)}
+
+:root{
+--red:#8c3124;
+--red-light:#a63b2d;  
+--gray:#666;
+--gray-dark:#363636;
+--gray-light:#999;
+--white:#ffffff;
+--bg:#f9f9f9;
+--bg-card:#ffffff;
+--font-body:'Titillium Web',sans-serif;
+--font-head:'Dosis',sans-serif;
+--shadow:0 4px 20px rgba(0,0,0,0.08);
+--shadow-hover:0 8px 30px rgba(140,49,36,0.15);
+--transition:all 0.3s ease;
+--border-radius:12px;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);line-height:1.6;min-height:100vh}
+
+/* PROGRESS BAR */
+.progress-bar-container{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.progress-bar{height:6px;background:linear-gradient(90deg,var(--red),var(--red-light));width:0%;transition:width 0.5s ease}
+.progress-info{padding:12px 24px;display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:var(--gray)}
+.test-timer{color:var(--gray-light);font-weight:500}
+
+/* MAIN CONTAINER */
+.main-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px 40px;transition:var(--transition)}
+.test-container{background:var(--bg-card);border-radius:20px;padding:48px 40px;max-width:800px;width:100%;box-shadow:var(--shadow);position:relative;overflow:hidden}
+
+/* LOGO AND HEADER */
+.test-header{text-align:center;margin-bottom:40px}
+.test-logo{height:60px;border-radius:10px;margin-bottom:20px}
+.test-title{font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:8px;color:var(--gray-dark);font-weight:600}
+.test-subtitle{color:var(--gray);font-size:1.1rem;line-height:1.6;margin-bottom:0}
+
+/* STEP INDICATORS */
+.step-indicators{display:flex;justify-content:center;gap:12px;margin-bottom:32px}
+.step-indicator{width:12px;height:12px;border-radius:50%;background:var(--gray-light);opacity:0.3;transition:var(--transition)}
+.step-indicator.active{background:var(--red);opacity:1;transform:scale(1.2)}
+.step-indicator.completed{background:var(--red);opacity:0.6}
+
+/* FORM STYLES */
+.form-group{margin-bottom:24px;text-align:left}
+.form-label{display:block;font-weight:600;color:var(--gray-dark);margin-bottom:8px;font-size:0.95rem}
+.form-input{width:100%;padding:16px 20px;border:2px solid #e5e5e5;border-radius:var(--border-radius);font-size:1rem;font-family:var(--font-body);transition:var(--transition);background:var(--white)}
+.form-input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(140,49,36,0.1)}
+.form-input::placeholder{color:var(--gray-light)}
+
+/* BUTTONS */
+.btn{padding:16px 32px;border:none;border-radius:var(--border-radius);font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-body)}
+.btn-primary{background:var(--red);color:var(--white)}
+.btn-primary:hover:not(:disabled){background:var(--red-light);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.btn-primary:disabled{background:var(--gray-light);cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--gray-dark);border:2px solid #e5e5e5}
+.btn-secondary:hover{border-color:var(--red);color:var(--red)}
+
+.btn-group{display:flex;justify-content:space-between;align-items:center;margin-top:40px;gap:16px}
+.btn-group.center{justify-content:center}
+
+/* QUESTION STYLES */
+.question-container{margin-bottom:32px}
+.question-header{margin-bottom:32px;text-align:center}
+.question-counter{color:var(--red);font-weight:600;font-size:0.9rem;margin-bottom:8px}
+.question-text{font-size:1.2rem;color:var(--gray-dark);line-height:1.5;font-weight:500}
+
+.options-grid{display:grid;gap:12px;margin-bottom:32px}
+.option-card{background:var(--white);border:2px solid #e5e5e5;border-radius:var(--border-radius);padding:20px;cursor:pointer;transition:var(--transition);position:relative;display:flex;align-items:center;gap:16px}
+.option-card:hover{border-color:var(--red);background:#fefefe}
+.option-card.selected{border-color:var(--red);background:rgba(140,49,36,0.05)}
+.option-card.selected::after{content:'';position:absolute;top:12px;right:12px;width:20px;height:20px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.option-card.selected::before{content:'✓';position:absolute;top:16px;right:16px;color:var(--white);font-size:12px;font-weight:bold;z-index:1}
+
+.option-letter{background:var(--bg);color:var(--gray);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.9rem;flex-shrink:0}
+.option-text{flex:1;color:var(--gray-dark);font-size:1rem}
+
+/* WRITING TASK */
+.writing-container{text-align:left}
+.writing-prompt{background:var(--bg);padding:24px;border-radius:var(--border-radius);margin-bottom:24px;border-left:4px solid var(--red)}
+.writing-prompt h3{color:var(--gray-dark);margin-bottom:12px;font-size:1.1rem}
+.writing-prompt p{color:var(--gray);font-size:0.95rem;line-height:1.6;margin:0}
+
+.writing-textarea{width:100%;min-height:200px;padding:20px;border:2px solid #e5e5e5;border-radius:var(--border-radius);font-family:var(--font-body);font-size:1rem;line-height:1.6;resize:vertical;transition:var(--transition)}
+.writing-textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(140,49,36,0.1)}
+
+.char-counter{text-align:right;color:var(--gray-light);font-size:0.85rem;margin-top:8px}
+
+/* RESULTS */
+.results-container{text-align:center}
+.score-display{background:linear-gradient(135deg,var(--red),var(--red-light));color:var(--white);padding:32px;border-radius:20px;margin-bottom:32px}
+.score-number{font-size:3rem;font-weight:700;font-family:var(--font-head);margin-bottom:8px}
+.score-text{font-size:1.1rem;opacity:0.9}
+.level-badge{display:inline-block;background:var(--white);color:var(--red);padding:12px 24px;border-radius:50px;font-weight:700;font-size:1.1rem;margin-top:16px}
+
+.results-info{background:var(--bg);padding:24px;border-radius:var(--border-radius);margin-bottom:32px;text-align:left}
+.results-info h3{color:var(--gray-dark);margin-bottom:12px}
+.results-info p{color:var(--gray);margin-bottom:16px}
+.results-info ul{margin-left:20px;color:var(--gray)}
+.results-info li{margin-bottom:8px}
+
+.cta-section{background:linear-gradient(135deg,rgba(140,49,36,0.1),rgba(140,49,36,0.05));padding:32px;border-radius:var(--border-radius);margin-top:32px}
+.cta-section h3{color:var(--gray-dark);margin-bottom:16px;font-size:1.3rem}
+.cta-section p{color:var(--gray);margin-bottom:24px}
+
+.whatsapp-btn{background:#25D366;color:var(--white);padding:16px 24px;border-radius:var(--border-radius);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:10px;transition:var(--transition)}
+.whatsapp-btn:hover{background:#22BE5B;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.3)}
+
+/* UTILITY CLASSES */
+.text-center{text-align:center}
+.hidden{display:none}
+.fade-in{animation:fadeIn 0.5s ease-in-out}
+.slide-in-right{animation:slideInRight 0.4s ease-out}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+.test-container{padding:32px 24px;margin:0 16px}
+.btn-group{flex-direction:column;gap:12px}
+.btn-group .btn{width:100%}
+.btn-group.center{flex-direction:row}
+.options-grid{gap:8px}
+.option-card{padding:16px}
+.question-text{font-size:1.1rem}
+.score-number{font-size:2.5rem}
+.step-indicators{gap:8px}
+.progress-info{padding:8px 16px;font-size:0.8rem}
+}
+
+@media(max-width:480px){
+.test-container{padding:24px 16px}
+.test-title{font-size:1.5rem}
+.btn{padding:14px 24px;font-size:0.95rem}
+.option-card{padding:14px}
+.writing-textarea{min-height:150px}
+}
 </style>
 </head>
 <body>
+
+<!-- Progress Bar -->
+<div class="progress-bar-container">
+<div class="progress-bar" id="progressBar"></div>
+<div class="progress-info">
+<span id="progressText">Iniciando teste...</span>
+<span class="test-timer" id="testTimer">00:00</span>
+</div>
+</div>
+
+<!-- Main Container -->
+<div class="main-container">
 <div class="test-container">
-<img src="logo.jpg" alt="B2B Languages">
-<h1>Teste de Nível</h1>
-<p>Avalie seu nível de inglês ou espanhol e receba um plano personalizado.</p>
-<div class="placeholder-box">
-<i class="fas fa-clipboard-check" style="font-size:2rem;margin-bottom:16px;color:var(--red)"></i>
-<p><strong>[Teste de nível será implementado aqui]</strong></p>
-<p style="font-size:0.9rem;margin-top:8px">Perguntas de múltipla escolha para avaliar reading, listening, grammar e vocabulary.</p>
+
+<!-- Test Header -->
+<div class="test-header">
+<img src="logo.jpg" alt="B2B Languages" class="test-logo">
+<h1 class="test-title">Teste de Nível de Inglês</h1>
+<p class="test-subtitle">Descubra seu nível de inglês e receba um plano personalizado</p>
 </div>
-<a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao site</a>
+
+<!-- Step Indicators -->
+<div class="step-indicators">
+<div class="step-indicator active" id="step1Indicator"></div>
+<div class="step-indicator" id="step2Indicator"></div>
+<div class="step-indicator" id="step3Indicator"></div>
+<div class="step-indicator" id="step4Indicator"></div>
 </div>
+
+<!-- STEP 1: Personal Details -->
+<div id="step1" class="test-step fade-in">
+<form id="personalForm">
+<div class="form-group">
+<label for="name" class="form-label">Nome Completo *</label>
+<input type="text" id="name" name="name" class="form-input" placeholder="Digite seu nome completo" required>
+</div>
+<div class="form-group">
+<label for="company" class="form-label">Empresa</label>
+<input type="text" id="company" name="company" class="form-input" placeholder="Nome da sua empresa">
+</div>
+<div class="form-group">
+<label for="email" class="form-label">E-mail *</label>
+<input type="email" id="email" name="email" class="form-input" placeholder="seu.email@exemplo.com" required>
+</div>
+<div class="form-group">
+<label for="phone" class="form-label">Celular *</label>
+<input type="tel" id="phone" name="phone" class="form-input" placeholder="(11) 99999-9999" required>
+</div>
+<div class="btn-group center">
+<button type="submit" class="btn btn-primary">
+<i class="fas fa-play"></i>
+Começar Teste
+</button>
+</div>
+</form>
+</div>
+
+<!-- STEP 2: Multiple Choice Questions -->
+<div id="step2" class="test-step hidden">
+<div class="question-container">
+<div class="question-header">
+<div class="question-counter" id="questionCounter">Questão 1 de 40</div>
+<div class="question-text" id="questionText"></div>
+</div>
+<div class="options-grid" id="optionsGrid"></div>
+<div class="btn-group">
+<button type="button" class="btn btn-secondary" id="backBtn" onclick="previousQuestion()">
+<i class="fas fa-arrow-left"></i>
+Voltar
+</button>
+<div>
+<button type="button" class="btn btn-secondary" id="skipBtn" onclick="skipQuestion()" style="margin-right:12px">
+Pular
+</button>
+<button type="button" class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+Próxima
+<i class="fas fa-arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- STEP 3: Writing Tasks -->
+<div id="step3" class="test-step hidden">
+<div class="writing-container">
+<div class="writing-prompt" id="writingPrompt">
+<h3 id="writingTitle"></h3>
+<p id="writingDescription"></p>
+</div>
+<textarea id="writingTextarea" class="writing-textarea" placeholder="Escreva sua resposta aqui..." oninput="updateCharCounter()"></textarea>
+<div class="char-counter" id="charCounter">0 caracteres</div>
+<div class="btn-group">
+<button type="button" class="btn btn-secondary" id="writingBackBtn" onclick="previousWriting()">
+<i class="fas fa-arrow-left"></i>
+Voltar
+</button>
+<button type="button" class="btn btn-primary" id="writingNextBtn" onclick="nextWriting()">
+Próxima
+<i class="fas fa-arrow-right"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- STEP 4: Results -->
+<div id="step4" class="test-step hidden">
+<div class="results-container">
+<div class="score-display">
+<div class="score-number" id="finalScore">0</div>
+<div class="score-text">pontos de 76 possíveis</div>
+<div class="level-badge" id="levelBadge">A1 - Beginner</div>
+</div>
+
+<div class="results-info">
+<h3><i class="fas fa-info-circle"></i> Sobre seu resultado</h3>
+<p><strong>Múltipla escolha:</strong> <span id="mcScore">0</span>/76 pontos</p>
+<p><strong>Redação:</strong> Suas respostas de redação serão avaliadas por nossa equipe. Entraremos em contato com seu resultado completo em breve.</p>
+<ul>
+<li>A1-A2: Beginner/Elementary - Conceitos básicos</li>
+<li>B1-B2: Intermediate/Upper-Int - Comunicação efetiva</li>
+<li>C1-C2: Advanced/Proficient - Fluência avançada</li>
+</ul>
+</div>
+
+<div class="cta-section">
+<h3>Pronto para o próximo nível?</h3>
+<p>Agende uma aula experimental gratuita e comece sua jornada para fluência!</p>
+<a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Acabei%20de%20fazer%20o%20teste%20de%20n%C3%ADvel%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental." class="whatsapp-btn" target="_blank">
+<i class="fab fa-whatsapp"></i>
+Agendar Aula Experimental
+</a>
+</div>
+
+<div class="btn-group center" style="margin-top:32px">
+<a href="index.html" class="btn btn-secondary">
+<i class="fas fa-arrow-left"></i>
+Voltar ao site
+</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+// Test Data
+const mcQuestions = [
+// Beginner (A1-A2) — Questions 1-12
+{
+question: "Excuse me, __________ for the bus?",
+options: ["do you wait", "are you waiting", "is you waiting", "you are waiting"],
+correct: 1,
+level: "A1-A2"
+},
+{
+question: "What __________ your wife do?", 
+options: ["do", "is", "does", "are"],
+correct: 2,
+level: "A1-A2"
+},
+{
+question: "__________ the newspaper? Can I borrow it?",
+options: ["do you read", "you read", "are you reading", "you are reading"],
+correct: 2,
+level: "A1-A2"
+},
+{
+question: "My son __________ television very often.",
+options: ["is not watch", "is not watching", "doesn't watch", "not watches"],
+correct: 2,
+level: "A1-A2"
+},
+{
+question: "I __________ to the radio. You can turn it off.",
+options: ["don't listen", "not listening", "am listening", "am not listening"],
+correct: 3,
+level: "A1-A2"
+},
+{
+question: "Tom and Kate __________ when I arrived.",
+options: ["are studying", "were studying", "study", "was studying"],
+correct: 1,
+level: "A1-A2"
+},
+{
+question: "She __________ him in the park last weekend.",
+options: ["sees", "saw", "is seeing", "was seeing"],
+correct: 1,
+level: "A1-A2"
+},
+{
+question: "__________ to the theatre last week?",
+options: ["Was she going", "Did she go", "Did she went", "Does she go"],
+correct: 1,
+level: "A1-A2"
+},
+{
+question: "They __________ our proposal.",
+options: ["didn't accepted", "not accepted", "didn't accept", "not accept"],
+correct: 2,
+level: "A1-A2"
+},
+{
+question: "I __________ a new laptop last month.",
+options: ["buyed", "have bought", "bought", "was buying"],
+correct: 2,
+level: "A1-A2"
+},
+{
+question: "There __________ any milk in the fridge.",
+options: ["isn't", "aren't", "don't", "doesn't"],
+correct: 0,
+level: "A1-A2"
+},
+{
+question: "She __________ to work by bus every day.",
+options: ["go", "going", "goes", "is go"],
+correct: 2,
+level: "A1-A2"
+},
+
+// Pre-Intermediate (A2-B1) — Questions 13-20
+{
+question: "I think __________ travel abroad next year.",
+options: ["I am going to", "I will go to", "I go to", "I will"],
+correct: 0,
+level: "A2-B1"
+},
+{
+question: "He said that he __________ next Saturday.",
+options: ["will move", "moves", "is going to move", "moving"],
+correct: 2,
+level: "A2-B1"
+},
+{
+question: "According to the timetable, the bus __________ at 6:00.",
+options: ["arrives", "is going to arrive", "is arriving", "will arrive"],
+correct: 0,
+level: "A2-B1"
+},
+{
+question: "Susan __________ here since 2000.",
+options: ["works", "worked", "is working", "has worked"],
+correct: 3,
+level: "A2-B1"
+},
+{
+question: "We __________ in Boston for 4 years, then we moved to New York.",
+options: ["live", "were living", "lived", "have lived"],
+correct: 2,
+level: "A2-B1"
+},
+{
+question: "My kids __________ English for 2 years. They really enjoy it!",
+options: ["study", "are studying", "have been studying", "studied"],
+correct: 2,
+level: "A2-B1"
+},
+{
+question: "Paty __________ well since she woke up this morning.",
+options: ["doesn't feel", "hasn't been felt", "isn't feeling", "hasn't been feeling"],
+correct: 3,
+level: "A2-B1"
+},
+{
+question: "Kevin __________ her 2 years ago, when he was in the army.",
+options: ["has met", "has been met", "met", "has been meeting"],
+correct: 2,
+level: "A2-B1"
+},
+
+// Intermediate (B1-B2) — Questions 21-30
+{
+question: "When we got to the airport, the plane __________.",
+options: ["has left", "had left", "left", "had been leaving"],
+correct: 1,
+level: "B1-B2"
+},
+{
+question: "When I looked back again, the man __________.",
+options: ["had vanished", "was vanished", "had been vanishing", "has vanished"],
+correct: 0,
+level: "B1-B2"
+},
+{
+question: "By the time the police arrived, the thieves __________.",
+options: ["have run away", "had run away", "run away", "ran away"],
+correct: 1,
+level: "B1-B2"
+},
+{
+question: "Michael __________ on 26th November 1976.",
+options: ["born", "was born", "has born", "has been born"],
+correct: 1,
+level: "B1-B2"
+},
+{
+question: "I don't think you __________ to show your passport.",
+options: ["ask", "will ask", "will be asked", "will be asking"],
+correct: 2,
+level: "B1-B2"
+},
+{
+question: "Our company __________ with furniture by Wood's Ltd.",
+options: ["supplies", "is supplying", "has supplied", "is being supplied"],
+correct: 3,
+level: "B1-B2"
+},
+{
+question: "We __________ to wait in this room until their meeting is over.",
+options: ["were told", "told", "were telling", "tell"],
+correct: 0,
+level: "B1-B2"
+},
+{
+question: "It was 5 o'clock one hour ago. Your watch __________ be right!",
+options: ["mustn't", "shouldn't", "can't", "isn't"],
+correct: 2,
+level: "B1-B2"
+},
+{
+question: "You __________ light up your cigarette in here, sir. Smoking is forbidden.",
+options: ["shouldn't", "mustn't", "couldn't", "wouldn't"],
+correct: 1,
+level: "B1-B2"
+},
+{
+question: "I wonder why they haven't arrived yet. They __________ have got lost!",
+options: ["must", "ought to", "should", "need to"],
+correct: 0,
+level: "B1-B2"
+},
+
+// Upper-Intermediate (B2-C1) — Questions 31-36
+{
+question: "If you see Paul, __________ him to come to my office straightaway!",
+options: ["you tell", "you will tell", "you would tell", "you told"],
+correct: 0,
+level: "B2-C1"
+},
+{
+question: "When Carla __________ older, she will do a course abroad.",
+options: ["will be", "be", "is", "to be"],
+correct: 2,
+level: "B2-C1"
+},
+{
+question: "If you had followed my instructions, that __________.",
+options: ["wouldn't happen", "didn't happen", "wouldn't have happened", "hasn't happened"],
+correct: 2,
+level: "B2-C1"
+},
+{
+question: "If you help me, I __________ the same for you one day.",
+options: ["will do", "do", "would do", "am doing"],
+correct: 0,
+level: "B2-C1"
+},
+{
+question: "I don't like apartments. I __________ happier if I lived in a house.",
+options: ["will be", "am", "would be", "have been"],
+correct: 2,
+level: "B2-C1"
+},
+{
+question: "The report __________ by the time the manager arrives tomorrow.",
+options: ["will finish", "will be finished", "finishes", "is finishing"],
+correct: 1,
+level: "B2-C1"
+},
+
+// Advanced (C1-C2) — Questions 37-40
+{
+question: "Had I known about the delay, I __________ earlier.",
+options: ["would leave", "would have left", "had left", "will have left"],
+correct: 1,
+level: "C1-C2"
+},
+{
+question: "Not only __________ the deadline, but he also exceeded expectations.",
+options: ["he met", "did he meet", "he did meet", "had he met"],
+correct: 1,
+level: "C1-C2"
+},
+{
+question: "The CEO insisted that every employee __________ the training session.",
+options: ["attends", "attend", "attended", "would attend"],
+correct: 1,
+level: "C1-C2"
+},
+{
+question: "Seldom __________ such a well-prepared presentation in my career.",
+options: ["I have seen", "I saw", "have I seen", "did I saw"],
+correct: 2,
+level: "C1-C2"
+}
+];
+
+const writingTasks = [
+{
+title: "Questão 1: Apresentação Pessoal",
+description: "Write a paragraph about yourself: your name, age, where you live, family, occupation, company, likes and dislikes."
+},
+{
+title: "Questão 2: Rotina de Trabalho",
+description: "Describe your typical workday from morning to evening. What do you do?"
+},
+{
+title: "Questão 3: Viagem Importante",
+description: "Write about an important trip you have taken in your life. Give details of the place, the date, and who you were with."
+},
+{
+title: "Questão 4: Planos Futuros",
+description: "What are your personal and professional plans for the next 5 years?"
+},
+{
+title: "Questão 5: Aprendizado de Inglês",
+description: "Why do you want to study English? How is English part of your life right now?"
+},
+{
+title: "Questão 6: E-mail Profissional",
+description: "Write an email to a colleague explaining that you need to reschedule a meeting. Be professional and polite."
+},
+{
+title: "Questão 7: Desafio no Trabalho",
+description: "Describe a challenge you faced at work and how you solved it."
+},
+{
+title: "Questão 8: Mudanças na Indústria",
+description: "If you could change one thing about your industry, what would it be and why?"
+}
+];
+
+// Test State
+let currentStep = 1;
+let currentMCQuestion = 0;
+let currentWritingTask = 0;
+let mcAnswers = [];
+let writingAnswers = [];
+let personalData = {};
+let testStartTime = null;
+let testTimer = null;
+
+// Initialize Test
+document.addEventListener('DOMContentLoaded', function() {
+initializeTest();
+});
+
+function initializeTest() {
+testStartTime = new Date();
+startTestTimer();
+updateProgress();
+updateStepIndicators();
+}
+
+function startTestTimer() {
+testTimer = setInterval(() => {
+const elapsed = Math.floor((new Date() - testStartTime) / 1000);
+const minutes = Math.floor(elapsed / 60);
+const seconds = elapsed % 60;
+document.getElementById('testTimer').textContent = 
+`${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+}, 1000);
+}
+
+function updateProgress() {
+let progress = 0;
+switch(currentStep) {
+case 1: progress = 5; break;
+case 2: progress = 15 + (currentMCQuestion / 40 * 60); break;
+case 3: progress = 75 + (currentWritingTask / 8 * 15); break;
+case 4: progress = 100; break;
+}
+document.getElementById('progressBar').style.width = progress + '%';
+
+let progressText = '';
+switch(currentStep) {
+case 1: progressText = 'Dados Pessoais'; break;
+case 2: progressText = `Questão ${currentMCQuestion + 1} de 40`; break;
+case 3: progressText = `Redação ${currentWritingTask + 1} de 8`; break;
+case 4: progressText = 'Resultado Final'; break;
+}
+document.getElementById('progressText').textContent = progressText;
+}
+
+function updateStepIndicators() {
+for(let i = 1; i <= 4; i++) {
+const indicator = document.getElementById(`step${i}Indicator`);
+if(i < currentStep) {
+indicator.className = 'step-indicator completed';
+} else if(i === currentStep) {
+indicator.className = 'step-indicator active';
+} else {
+indicator.className = 'step-indicator';
+}
+}
+}
+
+function showStep(step) {
+// Hide all steps
+document.querySelectorAll('.test-step').forEach(el => el.classList.add('hidden'));
+// Show current step
+document.getElementById(`step${step}`).classList.remove('hidden');
+document.getElementById(`step${step}`).classList.add('fade-in');
+currentStep = step;
+updateProgress();
+updateStepIndicators();
+}
+
+// STEP 1: Personal Details
+document.getElementById('personalForm').addEventListener('submit', function(e) {
+e.preventDefault();
+personalData = {
+name: document.getElementById('name').value.trim(),
+company: document.getElementById('company').value.trim(),
+email: document.getElementById('email').value.trim(),
+phone: document.getElementById('phone').value.trim()
+};
+
+if(!personalData.name || !personalData.email || !personalData.phone) {
+alert('Por favor, preencha todos os campos obrigatórios.');
+return;
+}
+
+showStep(2);
+loadMCQuestion();
+});
+
+// STEP 2: Multiple Choice Questions
+function loadMCQuestion() {
+if(currentMCQuestion >= mcQuestions.length) {
+showStep(3);
+loadWritingTask();
+return;
+}
+
+const question = mcQuestions[currentMCQuestion];
+document.getElementById('questionCounter').textContent = `Questão ${currentMCQuestion + 1} de 40`;
+document.getElementById('questionText').textContent = question.question;
+
+const optionsGrid = document.getElementById('optionsGrid');
+optionsGrid.innerHTML = '';
+
+const letters = ['A', 'B', 'C', 'D'];
+question.options.forEach((option, index) => {
+const optionCard = document.createElement('div');
+optionCard.className = 'option-card';
+optionCard.onclick = () => selectOption(index);
+optionCard.innerHTML = `
+<div class="option-letter">${letters[index]}</div>
+<div class="option-text">${option}</div>
+`;
+optionCard.id = `option-${index}`;
+optionsGrid.appendChild(optionCard);
+});
+
+// Restore previous answer if exists
+if(mcAnswers[currentMCQuestion] !== undefined) {
+selectOption(mcAnswers[currentMCQuestion]);
+}
+
+// Update back button
+document.getElementById('backBtn').style.display = currentMCQuestion > 0 ? 'inline-flex' : 'none';
+updateProgress();
+}
+
+function selectOption(optionIndex) {
+// Remove previous selection
+document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+// Add selection to clicked option
+document.getElementById(`option-${optionIndex}`).classList.add('selected');
+// Enable next button
+document.getElementById('nextBtn').disabled = false;
+// Store answer
+mcAnswers[currentMCQuestion] = optionIndex;
+}
+
+function nextQuestion() {
+if(mcAnswers[currentMCQuestion] === undefined) {
+alert('Por favor, selecione uma resposta.');
+return;
+}
+currentMCQuestion++;
+if(currentMCQuestion >= mcQuestions.length) {
+showStep(3);
+loadWritingTask();
+} else {
+loadMCQuestion();
+}
+}
+
+function previousQuestion() {
+if(currentMCQuestion > 0) {
+currentMCQuestion--;
+loadMCQuestion();
+}
+}
+
+function skipQuestion() {
+mcAnswers[currentMCQuestion] = null; // null indicates skipped
+currentMCQuestion++;
+if(currentMCQuestion >= mcQuestions.length) {
+showStep(3);
+loadWritingTask();
+} else {
+loadMCQuestion();
+}
+}
+
+// STEP 3: Writing Tasks
+function loadWritingTask() {
+if(currentWritingTask >= writingTasks.length) {
+showStep(4);
+calculateResults();
+return;
+}
+
+const task = writingTasks[currentWritingTask];
+document.getElementById('writingTitle').textContent = task.title;
+document.getElementById('writingDescription').textContent = task.description;
+document.getElementById('writingTextarea').value = writingAnswers[currentWritingTask] || '';
+updateCharCounter();
+
+// Update buttons
+document.getElementById('writingBackBtn').style.display = currentWritingTask > 0 ? 'inline-flex' : 'none';
+document.getElementById('writingNextBtn').innerHTML = currentWritingTask === writingTasks.length - 1 ? 
+'Finalizar <i class="fas fa-check"></i>' : 'Próxima <i class="fas fa-arrow-right"></i>';
+
+updateProgress();
+}
+
+function nextWriting() {
+// Save current answer
+writingAnswers[currentWritingTask] = document.getElementById('writingTextarea').value.trim();
+currentWritingTask++;
+if(currentWritingTask >= writingTasks.length) {
+showStep(4);
+calculateResults();
+} else {
+loadWritingTask();
+}
+}
+
+function previousWriting() {
+if(currentWritingTask > 0) {
+// Save current answer
+writingAnswers[currentWritingTask] = document.getElementById('writingTextarea').value.trim();
+currentWritingTask--;
+loadWritingTask();
+}
+}
+
+function updateCharCounter() {
+const textarea = document.getElementById('writingTextarea');
+const counter = document.getElementById('charCounter');
+const count = textarea.value.length;
+counter.textContent = `${count} caracteres`;
+}
+
+// STEP 4: Results
+function calculateResults() {
+let mcScore = 0;
+let mcTotal = mcQuestions.length * 1.9; // 40 * 1.9 = 76
+
+mcAnswers.forEach((answer, index) => {
+if(answer === mcQuestions[index].correct) {
+mcScore += 1.9;
+}
+});
+
+// Determine level based on MC score
+let level = 'A1 (Beginner)';
+let levelClass = 'level-a1';
+if(mcScore >= 69) { level = 'C2 (Proficient)'; levelClass = 'level-c2'; }
+else if(mcScore >= 58) { level = 'C1 (Advanced)'; levelClass = 'level-c1'; }
+else if(mcScore >= 46) { level = 'B2 (Upper Intermediate)'; levelClass = 'level-b2'; }
+else if(mcScore >= 31) { level = 'B1 (Intermediate)'; levelClass = 'level-b1'; }
+else if(mcScore >= 16) { level = 'A2 (Elementary)'; levelClass = 'level-a2'; }
+
+// Update display
+document.getElementById('finalScore').textContent = Math.round(mcScore * 10) / 10;
+document.getElementById('mcScore').textContent = Math.round(mcScore * 10) / 10;
+document.getElementById('levelBadge').textContent = level;
+document.getElementById('levelBadge').className = `level-badge ${levelClass}`;
+
+updateProgress();
+submitResults(mcScore, level);
+}
+
+// Webhook Submission
+async function submitResults(mcScore, level) {
+const testData = {
+lead: {
+name: personalData.name,
+company: personalData.company || '',
+email: personalData.email,
+phone: personalData.phone
+},
+mc_questions: mcQuestions.map((q, index) => ({
+number: index + 1,
+question: q.question,
+selected: mcAnswers[index] !== null && mcAnswers[index] !== undefined ? 
+String.fromCharCode(97 + mcAnswers[index]) : null, // Convert to a,b,c,d
+correct: String.fromCharCode(97 + q.correct),
+is_correct: mcAnswers[index] === q.correct
+})),
+writing_tasks: writingTasks.map((task, index) => ({
+number: index + 1,
+prompt: task.description,
+response: writingAnswers[index] || ''
+})),
+mc_score: Math.round(mcScore * 10) / 10,
+mc_total: 76,
+writing_score_pending: true,
+writing_total: 24,
+max_score: 100,
+estimated_level: level.split(' ')[0], // Extract just the level code
+timestamp: new Date().toISOString()
+};
+
+try {
+const response = await fetch('https://n8n.lfsadigital.com/webhook/b2b-placement-test', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(testData)
+});
+
+if(!response.ok) {
+console.error('Failed to submit test results');
+}
+} catch(error) {
+console.error('Error submitting test results:', error);
+}
+}
+
+// Phone number formatting
+document.getElementById('phone').addEventListener('input', function(e) {
+let value = e.target.value.replace(/\D/g, '');
+if(value.length >= 11) {
+value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+} else if(value.length >= 7) {
+value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+} else if(value.length >= 3) {
+value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+}
+e.target.value = value;
+});
+
+// Cleanup timer on page unload
+window.addEventListener('beforeunload', function() {
+if(testTimer) {
+clearInterval(testTimer);
+}
+});
+</script>
+
 </body>
 </html>
