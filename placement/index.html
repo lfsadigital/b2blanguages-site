@@ -932,12 +932,14 @@ clearInterval(testTimer);
 });
 
 // DEV MODE: ?dev=1 auto-fills and submits with random answers
+window.addEventListener('DOMContentLoaded', function() {
 if(new URLSearchParams(window.location.search).get('dev') === '1') {
 personalData = {name:'Teste Dev', company:'LFSA Digital', email:'dev@test.com', phone:'(11) 99999-9999'};
 mcAnswers = mcQuestions.map(() => Math.floor(Math.random()*4));
 writingAnswers = writingTasks.map((t,i) => 'Dev test response for writing task number '+(i+1)+'. This is a sample answer to test the placement system end to end.');
-calculateResults();
+setTimeout(function(){ calculateResults(); }, 500);
 }
+});
 </script>
 
 </body>
