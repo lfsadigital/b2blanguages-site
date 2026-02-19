@@ -69,7 +69,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);li
 .btn-secondary{background:transparent;color:var(--gray-dark);border:2px solid #e5e5e5}
 .btn-secondary:hover{border-color:var(--red);color:var(--red)}
 
-.btn-group{display:flex;justify-content:space-between;align-items:center;margin-top:40px;gap:16px}
+.test-step{display:flex;flex-direction:column;min-height:calc(100vh - 200px)}
+.test-step>form,.test-step>.question-container,.test-step>.writing-container,.test-step>.results-container{flex:1;display:flex;flex-direction:column}
+.test-step .btn-group{margin-top:auto;padding-top:32px}
+.btn-group{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .btn-group.center{justify-content:center}
 
 /* QUESTION STYLES */
