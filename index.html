@@ -104,7 +104,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 @media(max-width:900px){.hero-logo-float{width:250px;height:250px;right:-5%;opacity:0.5}}
 .hero .container{position:relative;z-index:1}
 .hero-content{max-width:700px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(140,49,36,0.1);border:1px solid rgba(140,49,36,0.3);padding:8px 18px;border-radius:50px;font-size:0.85rem;color:var(--red);margin-bottom:28px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);padding:8px 18px;border-radius:50px;font-size:0.85rem;color:#fff;margin-bottom:28px}
 .hero h1{font-family:var(--font-head);font-size:clamp(2.5rem,6vw,4rem);font-weight:700;line-height:1.1;margin-bottom:20px;color:#fff}
 .hero h1 .accent{color:var(--red)}
 .hero p{font-size:1.15rem;color:#ccc;max-width:540px;margin-bottom:36px;line-height:1.7}
@@ -142,7 +142,8 @@ section{padding:100px 0}
 .service-icon.group{background:rgba(155,89,182,0.15);color:#9b59b6}
 .service-icon.individual{background:rgba(230,126,34,0.15);color:#e67e22}
 .service-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:10px;color:var(--gray-dark)}
-.service-card p{color:var(--gray);font-size:0.95rem;line-height:1.6}
+.service-card p{color:var(--gray);font-size:0.95rem;line-height:1.6;max-height:3.2em;overflow:hidden;transition:max-height 0.3s ease}
+.service-card:hover p{max-height:500px}
 
 /* METHOD */
 #metodo{background:var(--white)}
@@ -290,7 +291,7 @@ body.lang-es [data-lang-es]{display:revert}
 <!-- NAV -->
 <nav>
 <div class="container">
-<a href="#" class="logo"><img src="images/logo-header.png" alt="B2B Languages" style="height:40px;width:auto"></a>
+<a href="#" class="logo"><img src="images/logo-header.png" alt="B2B Languages" style="height:56px;width:auto"></a>
 <ul class="nav-links" id="navLinks">
 <li><a href="#solucoes" data-lang-pt>Soluções</a><a href="#solucoes" data-lang-en>Solutions</a><a href="#solucoes" data-lang-es>Soluciones</a></li>
 <li><a href="#metodo" data-lang-pt>Método</a><a href="#metodo" data-lang-en>Method</a><a href="#metodo" data-lang-es>Método</a></li>
