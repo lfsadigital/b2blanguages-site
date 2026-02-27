@@ -75,11 +75,25 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);li
 .btn-group{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .btn-group.center{justify-content:center}
 
-/* QUESTION STYLES */
+/* QUESTION PAGE STYLES (8 per page) */
 .question-container{margin-bottom:32px}
 .question-header{margin-bottom:32px;text-align:center}
 .question-counter{color:var(--red);font-weight:600;font-size:0.9rem;margin-bottom:8px}
 .question-text{font-size:1.2rem;color:var(--gray-dark);line-height:1.5;font-weight:500}
+
+.mc-page-list{display:flex;flex-direction:column;gap:28px;margin-bottom:32px}
+
+.mc-card{background:var(--white);border:2px solid #e5e5e5;border-radius:var(--border-radius);padding:24px;transition:var(--transition)}
+.mc-card-number{color:var(--red);font-weight:600;font-size:0.85rem;margin-bottom:8px}
+.mc-card-question{font-size:1.05rem;color:var(--gray-dark);line-height:1.5;font-weight:500;margin-bottom:16px}
+.mc-card-options{display:grid;gap:8px}
+.mc-option{background:var(--bg);border:2px solid transparent;border-radius:8px;padding:12px 16px;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:12px;font-size:0.95rem}
+.mc-option:hover{border-color:var(--red-light);background:#fefefe}
+.mc-option.selected{border-color:var(--red);background:rgba(140,49,36,0.05)}
+.mc-option.selected .mc-option-radio{background:var(--red);border-color:var(--red)}
+.mc-option.selected .mc-option-radio::after{content:'';display:block;width:8px;height:8px;background:var(--white);border-radius:50%}
+.mc-option-radio{width:20px;height:20px;border-radius:50%;border:2px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--transition)}
+.mc-option-text{flex:1;color:var(--gray-dark)}
 
 .options-grid{display:grid;gap:12px;margin-bottom:32px}
 .option-card{background:var(--white);border:2px solid #e5e5e5;border-radius:var(--border-radius);padding:20px;cursor:pointer;transition:var(--transition);position:relative;display:flex;align-items:center;gap:16px}
@@ -101,6 +115,12 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);li
 .writing-textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(140,49,36,0.1)}
 
 .char-counter{text-align:right;color:var(--gray-light);font-size:0.85rem;margin-top:8px}
+
+/* PT-BR translation toggle */
+.translation-toggle{color:var(--gray-light);cursor:pointer;font-size:0.85rem;margin-left:6px;transition:var(--transition);vertical-align:middle}
+.translation-toggle:hover{color:var(--red)}
+.translation-text{display:none;margin-top:10px;padding-top:10px;border-top:1px solid #e5e5e5;color:var(--gray-light);font-size:0.9rem;font-style:italic;line-height:1.5}
+.translation-text.visible{display:block}
 
 /* RESULTS */
 .results-container{text-align:center}
@@ -143,6 +163,8 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);li
 .score-number{font-size:2.5rem}
 .step-indicators{gap:8px}
 .progress-info{padding:8px 16px;font-size:0.8rem}
+.mc-card{padding:16px}
+.mc-option{padding:10px 12px;font-size:0.9rem}
 }
 
 @media(max-width:480px){
@@ -151,6 +173,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--gray-dark);li
 .btn{padding:14px 24px;font-size:0.95rem}
 .option-card{padding:14px}
 .writing-textarea{min-height:150px}
+.mc-card{padding:14px}
 }
 </style>
 </head>
@@ -212,28 +235,22 @@ Começar Teste
 </form>
 </div>
 
-<!-- STEP 2: Multiple Choice Questions -->
+<!-- STEP 2: Multiple Choice Questions (8 per page) -->
 <div id="step2" class="test-step hidden">
 <div class="question-container">
 <div class="question-header">
-<div class="question-counter" id="questionCounter">Questão 1 de 40</div>
-<div class="question-text" id="questionText"></div>
+<div class="question-counter" id="questionCounter">Página 1 de 5</div>
 </div>
-<div class="options-grid" id="optionsGrid"></div>
+<div class="mc-page-list" id="mcPageList"></div>
 <div class="btn-group">
-<button type="button" class="btn btn-secondary" id="backBtn" onclick="previousQuestion()">
+<button type="button" class="btn btn-secondary" id="backBtn" onclick="previousPage()">
 <i class="fas fa-arrow-left"></i>
 Voltar
 </button>
-<div>
-<button type="button" class="btn btn-secondary" id="skipBtn" onclick="skipQuestion()" style="margin-right:12px">
-Pular
-</button>
-<button type="button" class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
-Próxima
+<button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPage()">
+Próxima Página
 <i class="fas fa-arrow-right"></i>
 </button>
-</div>
 </div>
 </div>
 </div>
@@ -244,6 +261,8 @@ Próxima
 <div class="writing-prompt" id="writingPrompt">
 <h3 id="writingTitle"></h3>
 <p id="writingDescription"></p>
+<span class="translation-toggle" id="translationToggle" onclick="toggleTranslation()"><i class="fas fa-info-circle"></i> PT-BR</span>
+<p class="translation-text" id="translationText"></p>
 </div>
 <textarea id="writingTextarea" class="writing-textarea" placeholder="Escreva sua resposta aqui..." oninput="updateCharCounter()"></textarea>
 <div class="char-counter" id="charCounter">0 caracteres</div>
@@ -552,41 +571,31 @@ level: "C1-C2"
 const writingTasks = [
 {
 title: "Questão 1: Apresentação Pessoal",
-description: "Write a paragraph about yourself: your name, age, where you live, family, occupation, company, likes and dislikes."
+description: "Write a paragraph about yourself: your name, age, where you live, family, occupation, company, likes and dislikes.",
+translation: "Escreva um parágrafo sobre você: seu nome, idade, onde mora, família, profissão, empresa, o que gosta e o que não gosta."
 },
 {
 title: "Questão 2: Rotina de Trabalho",
-description: "Describe your typical workday from morning to evening. What do you do?"
+description: "Describe your typical workday from morning to evening. What do you do?",
+translation: "Descreva seu dia de trabalho típico, da manhã até a noite. O que você faz?"
 },
 {
-title: "Questão 3: Viagem Importante",
-description: "Write about an important trip you have taken in your life. Give details of the place, the date, and who you were with."
+title: "Questão 3: E-mail Profissional",
+description: "Write an email to a colleague explaining that you need to reschedule a meeting. Be professional and polite.",
+translation: "Escreva um e-mail para um colega explicando que você precisa remarcar uma reunião. Seja profissional e educado."
 },
 {
-title: "Questão 4: Planos Futuros",
-description: "What are your personal and professional plans for the next 5 years?"
-},
-{
-title: "Questão 5: Aprendizado de Inglês",
-description: "Why do you want to study English? How is English part of your life right now?"
-},
-{
-title: "Questão 6: E-mail Profissional",
-description: "Write an email to a colleague explaining that you need to reschedule a meeting. Be professional and polite."
-},
-{
-title: "Questão 7: Desafio no Trabalho",
-description: "Describe a challenge you faced at work and how you solved it."
-},
-{
-title: "Questão 8: Mudanças na Indústria",
-description: "If you could change one thing about your industry, what would it be and why?"
+title: "Questão 4: Mudanças na Indústria",
+description: "If you could change one thing about your industry, what would it be and why?",
+translation: "Se você pudesse mudar uma coisa na sua indústria, o que seria e por quê?"
 }
 ];
 
 // Test State
+const QUESTIONS_PER_PAGE = 8;
+const TOTAL_MC_PAGES = Math.ceil(mcQuestions.length / QUESTIONS_PER_PAGE); // 5
 let currentStep = 1;
-let currentMCQuestion = 0;
+let currentMCPage = 0; // 0-indexed page
 let currentWritingTask = 0;
 let mcAnswers = [];
 let writingAnswers = [];
@@ -620,8 +629,8 @@ function updateProgress() {
 let progress = 0;
 switch(currentStep) {
 case 1: progress = 5; break;
-case 2: progress = 15 + (currentMCQuestion / 40 * 60); break;
-case 3: progress = 75 + (currentWritingTask / 8 * 15); break;
+case 2: progress = 15 + ((currentMCPage + 1) / TOTAL_MC_PAGES * 60); break;
+case 3: progress = 75 + ((currentWritingTask + 1) / writingTasks.length * 15); break;
 case 4: progress = 100; break;
 }
 document.getElementById('progressBar').style.width = progress + '%';
@@ -629,8 +638,8 @@ document.getElementById('progressBar').style.width = progress + '%';
 let progressText = '';
 switch(currentStep) {
 case 1: progressText = 'Dados Pessoais'; break;
-case 2: progressText = `Questão ${currentMCQuestion + 1} de 40`; break;
-case 3: progressText = `Redação ${currentWritingTask + 1} de 8`; break;
+case 2: progressText = `Página ${currentMCPage + 1} de ${TOTAL_MC_PAGES} — Questões ${currentMCPage * QUESTIONS_PER_PAGE + 1}–${Math.min((currentMCPage + 1) * QUESTIONS_PER_PAGE, mcQuestions.length)}`; break;
+case 3: progressText = `Redação ${currentWritingTask + 1} de ${writingTasks.length}`; break;
 case 4: progressText = 'Resultado Final'; break;
 }
 document.getElementById('progressText').textContent = progressText;
@@ -650,9 +659,7 @@ indicator.className = 'step-indicator';
 }
 
 function showStep(step) {
-// Hide all steps
 document.querySelectorAll('.test-step').forEach(el => el.classList.add('hidden'));
-// Show current step
 document.getElementById(`step${step}`).classList.remove('hidden');
 document.getElementById(`step${step}`).classList.add('fade-in');
 currentStep = step;
@@ -675,88 +682,90 @@ alert('Por favor, preencha todos os campos obrigatórios.');
 return;
 }
 
+currentMCPage = 0;
 showStep(2);
-loadMCQuestion();
+loadMCPage();
 });
 
-// STEP 2: Multiple Choice Questions
-function loadMCQuestion() {
-if(currentMCQuestion >= mcQuestions.length) {
-showStep(3);
-loadWritingTask();
-return;
-}
+// STEP 2: Multiple Choice — 8 questions per page
+function loadMCPage() {
+const startIdx = currentMCPage * QUESTIONS_PER_PAGE;
+const endIdx = Math.min(startIdx + QUESTIONS_PER_PAGE, mcQuestions.length);
 
-const question = mcQuestions[currentMCQuestion];
-document.getElementById('questionCounter').textContent = `Questão ${currentMCQuestion + 1} de 40`;
-document.getElementById('questionText').textContent = question.question;
+document.getElementById('questionCounter').textContent = `Página ${currentMCPage + 1} de ${TOTAL_MC_PAGES}`;
 
-const optionsGrid = document.getElementById('optionsGrid');
-optionsGrid.innerHTML = '';
+const pageList = document.getElementById('mcPageList');
+pageList.innerHTML = '';
 
 const letters = ['A', 'B', 'C', 'D'];
-question.options.forEach((option, index) => {
-const optionCard = document.createElement('div');
-optionCard.className = 'option-card';
-optionCard.onclick = () => selectOption(index);
-optionCard.innerHTML = `
-<div class="option-letter">${letters[index]}</div>
-<div class="option-text">${option}</div>
+for(let i = startIdx; i < endIdx; i++) {
+const q = mcQuestions[i];
+const card = document.createElement('div');
+card.className = 'mc-card';
+card.innerHTML = `
+<div class="mc-card-number">Questão ${i + 1} de 40</div>
+<div class="mc-card-question">${q.question}</div>
+<div class="mc-card-options">
+${q.options.map((opt, oi) => `
+<div class="mc-option${mcAnswers[i] === oi ? ' selected' : ''}" onclick="selectMCOption(${i}, ${oi})">
+<div class="mc-option-radio">${mcAnswers[i] === oi ? '<div style="width:8px;height:8px;background:#fff;border-radius:50%"></div>' : ''}</div>
+<div class="mc-option-text"><strong>${letters[oi]}.</strong> ${opt}</div>
+</div>
+`).join('')}
+</div>
 `;
-optionCard.id = `option-${index}`;
-optionsGrid.appendChild(optionCard);
-});
-
-// Restore previous answer if exists
-if(mcAnswers[currentMCQuestion] !== undefined) {
-selectOption(mcAnswers[currentMCQuestion]);
+pageList.appendChild(card);
 }
 
-// Update back button
-document.getElementById('backBtn').style.display = currentMCQuestion > 0 ? 'inline-flex' : 'none';
+// Back button visibility
+document.getElementById('backBtn').style.display = currentMCPage > 0 ? 'inline-flex' : 'none';
+// Next button text
+const isLastPage = currentMCPage >= TOTAL_MC_PAGES - 1;
+document.getElementById('nextBtn').innerHTML = isLastPage ?
+'Próxima Etapa <i class="fas fa-arrow-right"></i>' :
+'Próxima Página <i class="fas fa-arrow-right"></i>';
+
 updateProgress();
+// Scroll to top of container
+document.querySelector('.main-container').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-function selectOption(optionIndex) {
-// Remove previous selection
-document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
-// Add selection to clicked option
-document.getElementById(`option-${optionIndex}`).classList.add('selected');
-// Enable next button
-document.getElementById('nextBtn').disabled = false;
-// Store answer
-mcAnswers[currentMCQuestion] = optionIndex;
+function selectMCOption(questionIdx, optionIdx) {
+mcAnswers[questionIdx] = optionIdx;
+// Re-render just the options for that question card
+const startIdx = currentMCPage * QUESTIONS_PER_PAGE;
+const cardIndex = questionIdx - startIdx;
+const cards = document.querySelectorAll('.mc-card');
+if(cards[cardIndex]) {
+const options = cards[cardIndex].querySelectorAll('.mc-option');
+const letters = ['A', 'B', 'C', 'D'];
+options.forEach((opt, oi) => {
+if(oi === optionIdx) {
+opt.classList.add('selected');
+opt.querySelector('.mc-option-radio').innerHTML = '<div style="width:8px;height:8px;background:#fff;border-radius:50%"></div>';
+} else {
+opt.classList.remove('selected');
+opt.querySelector('.mc-option-radio').innerHTML = '';
+}
+});
+}
 }
 
-function nextQuestion() {
-if(mcAnswers[currentMCQuestion] === undefined) {
-alert('Por favor, selecione uma resposta.');
-return;
-}
-currentMCQuestion++;
-if(currentMCQuestion >= mcQuestions.length) {
+function nextPage() {
+currentMCPage++;
+if(currentMCPage >= TOTAL_MC_PAGES) {
 showStep(3);
+currentWritingTask = 0;
 loadWritingTask();
 } else {
-loadMCQuestion();
+loadMCPage();
 }
 }
 
-function previousQuestion() {
-if(currentMCQuestion > 0) {
-currentMCQuestion--;
-loadMCQuestion();
-}
-}
-
-function skipQuestion() {
-mcAnswers[currentMCQuestion] = null; // null indicates skipped
-currentMCQuestion++;
-if(currentMCQuestion >= mcQuestions.length) {
-showStep(3);
-loadWritingTask();
-} else {
-loadMCQuestion();
+function previousPage() {
+if(currentMCPage > 0) {
+currentMCPage--;
+loadMCPage();
 }
 }
 
@@ -771,6 +780,8 @@ return;
 const task = writingTasks[currentWritingTask];
 document.getElementById('writingTitle').textContent = task.title;
 document.getElementById('writingDescription').textContent = task.description;
+document.getElementById('translationText').textContent = task.translation;
+document.getElementById('translationText').classList.remove('visible');
 document.getElementById('writingTextarea').value = writingAnswers[currentWritingTask] || '';
 updateCharCounter();
 
@@ -782,8 +793,11 @@ document.getElementById('writingNextBtn').innerHTML = currentWritingTask === wri
 updateProgress();
 }
 
+function toggleTranslation() {
+document.getElementById('translationText').classList.toggle('visible');
+}
+
 function nextWriting() {
-// Save current answer
 writingAnswers[currentWritingTask] = document.getElementById('writingTextarea').value.trim();
 currentWritingTask++;
 if(currentWritingTask >= writingTasks.length) {
@@ -796,7 +810,6 @@ loadWritingTask();
 
 function previousWriting() {
 if(currentWritingTask > 0) {
-// Save current answer
 writingAnswers[currentWritingTask] = document.getElementById('writingTextarea').value.trim();
 currentWritingTask--;
 loadWritingTask();
@@ -822,8 +835,6 @@ mcScore += 1.9;
 });
 
 // Mastery-based level determination (Cambridge-style)
-// Your level = highest band where you got ≥70% correct
-// Q1-12 = A1-A2 (12 questions), Q13-20 = A2-B1 (8), Q21-30 = B1-B2 (10), Q31-36 = B2-C1 (6), Q37-40 = C1-C2 (4)
 const bands = [
   { name: 'A1-A2', start: 0, end: 12, threshold: 0.7 },
   { name: 'A2-B1', start: 12, end: 20, threshold: 0.7 },
@@ -840,7 +851,6 @@ const bandResults = bands.map(band => {
   return { name: band.name, correct, total, pct: correct / total, passed: (correct / total) >= band.threshold };
 });
 
-// Level = highest band passed; must pass all previous bands too
 let level = 'A1 (Beginner)';
 let levelClass = 'level-a1';
 const levelMap = [
@@ -855,11 +865,9 @@ for (const lm of levelMap) {
     level = lm.level;
     levelClass = lm.cls;
   } else {
-    break; // Stop at first band not mastered
+    break;
   }
 }
-
-// Score/level not shown to student — only sent via webhook
 
 updateProgress();
 submitResults(mcScore, level, bandResults);
@@ -877,13 +885,19 @@ phone: personalData.phone
 mc_questions: mcQuestions.map((q, index) => ({
 number: index + 1,
 question: q.question,
+options: q.options,
 selected: mcAnswers[index] !== null && mcAnswers[index] !== undefined ? 
-String.fromCharCode(97 + mcAnswers[index]) : null, // Convert to a,b,c,d
+String.fromCharCode(97 + mcAnswers[index]) : null,
+selected_text: mcAnswers[index] !== null && mcAnswers[index] !== undefined ?
+q.options[mcAnswers[index]] : null,
 correct: String.fromCharCode(97 + q.correct),
-is_correct: mcAnswers[index] === q.correct
+correct_text: q.options[q.correct],
+is_correct: mcAnswers[index] === q.correct,
+level: q.level
 })),
 writing_tasks: writingTasks.map((task, index) => ({
 number: index + 1,
+title: task.title,
 prompt: task.description,
 response: writingAnswers[index] || ''
 })),
@@ -893,7 +907,7 @@ band_results: bandResults || [],
 writing_score_pending: true,
 writing_total: 24,
 max_score: 100,
-estimated_level: level.split(' ')[0], // Extract just the level code
+estimated_level: level.split(' ')[0],
 timestamp: new Date().toISOString()
 };
 
@@ -938,7 +952,6 @@ clearInterval(testTimer);
 (function devCheck() {
 if(new URLSearchParams(window.location.search).get('dev') !== '1') return;
 function runDev() {
-// Fill form inputs to bypass validation
 var nameEl = document.getElementById('name');
 var emailEl = document.getElementById('email');
 var phoneEl = document.getElementById('phone');
@@ -948,11 +961,9 @@ nameEl.value = 'Teste Dev';
 emailEl.value = 'dev@test.com';
 phoneEl.value = '11999999999';
 if(companyEl) companyEl.value = 'LFSA Digital';
-// Set data directly
 personalData = {name:'Teste Dev', company:'LFSA Digital', email:'dev@test.com', phone:'11999999999'};
 mcAnswers = mcQuestions.map(function(){ return Math.floor(Math.random()*4); });
 writingAnswers = writingTasks.map(function(t,i){ return 'Dev test response for writing task number '+(i+1)+'. This is a sample answer to test the placement system.'; });
-// Skip to results
 calculateResults();
 }
 if(document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', runDev); }
